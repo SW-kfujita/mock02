@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ペイシェントダッシュボード - スカイカルテ！</title>
+
+    <script src="../../Scripts/vender/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../Scripts/vender/jquery/modernizr-2.8.3.js"></script>
+
+    <link href="../../Content/common.css" rel="stylesheet" />
+
+    <link href="../../Content/style.css" rel="stylesheet" />
+
+    <link href="../../Content/vender/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../Content/vender/fontawesome/all.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- header -->
+    <header class="border-bottom w-100" style="position: fixed; top: 0; z-index: 99;">
+      <div class="primary-bar d-flex justify-content-between px-4">
+        <h1 class="h3 d-inline-block text-white mt-1">
+          <span class="font-weight-bold mr-1">Sky</span>Karte
+        </h1>
+        <div class="dropdown">
+          <a href="#" class="ml-4 mr-4 text-white"><i class="fas fa-hospital-alt mr-2"></i>スカイクリニック</a>
+          <a class="dropdown-toggle text-white" href="#" role="button" id="dropdownPersonalLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user mr-2"></i>中村 岳夫
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownPersonalLink">
+            <a class="dropdown-item" href="#">設定</a>
+            <a class="dropdown-item" href="#">ログアウト</a>
+          </div>
+        </div>
+      </div>
+      <div class="secondary d-flex bg-white" style="height:60px;">
+        <i class="fa fa-male fa-3x mx-4 mt-1"></i>
+        <div class="mr-4" style="line-height:30px;">
+          すかい イチロウ<br />
+          <h5>須貝 一郎</h5>
+        </div>
+        <div class="h5" style="line-height:30px;">
+          <span class="mr-2">49歳</span><br />
+          <span class="mr-2">昭和44年</span> <span class="mr-2">9月13日生</span>
+        </div>
+      </div>
+    </header>
+    <!-- /header -->
+
+    <div id="body-main" class="container-fluid px-0" style="padding-top:77px;">
+      <div class="main">
+        <div class="">
+          <!-- container -->
+          <div class="container-fluid">
+            <div class="row">
+              <!-- page content -->
+              <div class="bg-color-bg px-0" role="main" style="min-width: 1166px;">
+                <!-- content -->
+                <div class="04do">
+                  <span class="fab-btn ripple"><a href="#" class="align-middle">DOする</a></span>
+                </div>
+                <div class="mx-3 my-4">
+                  <div class="d-flex justify-content-between">
+                    <h4 class="text-left">
+                      サマリータイル<i class="far fa-question-circle ml-3"></i>
+                    </h4>
+                    <div>
+                      <ul class="mb-0 mt-1">
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions0" id="inlineRadio11"
+                            value="option11" />
+                          <label class="form-check-label" for="inlineRadio11">全科</label>
+                        </li>
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions0" id="inlineRadio12"
+                            value="option12" />
+                          <label class="form-check-label" for="inlineRadio12">自科</label>
+                        </li>
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions0" id="inlineRadio13"
+                            value="option13" />
+                          <label class="form-check-label" for="inlineRadio13">科指定</label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <div class="card w-100 mr-2 selectable">
+                      <div class="card-header selected-target observation-bg--base">
+                        基礎疾患
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item pb-2">
+                          <p>2016/08/20</p>
+                          <p class="observation text-left">
+                            慢性腎不全治療中<br />
+                            症状：腎機能が50％以下に低下し、軽度の貧血、高血圧、夜間頻尿の症状がある。<br />
+                            指導：過労や感染症に注意し、血圧、血糖のコントロールすること。<br />
+                            食事は低蛋白、塩分摂取を控えること。<br />
+                            排尿量、浮腫に注意し、定期的な検査を行うこと。
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card w-100 mr-2 selectable">
+                      <div class="card-header selected-target">診療記事</div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item pb-2">
+                          <p>2018/12/12</p>
+                          <p class="observation text-left">
+                            胃がキリキリ痛む数日間安静が必要問題が見られず吐き気がする
+                            最近、疲れやすい吐き気がする
+                            水分バランスと栄養状態の管理腹部にしこりがみられる
+                            最近疲れやすい 定期的な通院が必要 打撲 骨折 捻挫
+                            危険因子なし 本日の朝胃がキリキリ痛む 主訴：腹痛
+                            １ヶ月前より続く上腹部の鈍痛。空腹時に痛む。
+                            発熱は無し。
+                            仕事柄、夜の飲酒が多く、朝、胃がもたれることが多い。
+                            そういうときには胃腸薬（消化を促進する）を服用する。
+                            問診：内科問診 腹痛がする 体温：36.5℃ 軟便ではない。
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card w-100 mr-2 selectable">
+                      <div class="card-header selected-target">処方</div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item pb-2">
+                          <p>2018/12/12</p>
+                          <p class="observation text-left">
+                            内服：<br />
+                            (1)ザンタック錠 150 mg<br />
+                            ガスターＤ錠 20 mg<br />
+                            (2)ムコスタ錠 100 mg
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card w-100 mr-2 selectable">
+                      <div class="card-header selected-target">検体検査</div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item pb-2">
+                          <p>2018/12/12</p>
+                          <p class="observation text-left">
+                            (1) 血液学的検査/血液一般<br />
+                            末梢血４項目, 血小板セットＣ<br />
+                            総蛋白, アルブミ, ｱﾙﾌﾐﾝ・ｸﾞﾛﾌﾞﾘﾝ比,
+                            総ビリルビン,ＡＳＴ,ＡＬＴ,ＬＤＨ, γ-ＧＴＰ, ＣＰＫ,
+                            ＡＬＰ,尿素窒素（ＵＮ）,クレアチニン,総コレステロール,
+                            中性脂肪, HDLコレステロール,
+                            ＬＤＬコレステロールナトリウム ,K,クロール
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card w-100 mr-2 selectable">
+                      <div class="card-header selected-target">
+                        検体検査結果
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item pb-2">
+                          <p>2018/12/12</p>
+                          <p class="observation text-left">AST(GOT) 結果 39</p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card w-100 mr-2 selectable">
+                      <div class="card-header selected-target observation-bg---past">
+                        生理
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item pb-2">
+                          <p>2017/08/30</p>
+                          <p class="observation text-left">
+                            呼吸循環機能検査 ECG(12誘導)
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card w-100 mr-2 selectable">
+                      <div class="card-header selected-target observation-bg---past">
+                        放射線
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item pb-2">
+                          <p>2017/08/30</p>
+                          <p class="observation text-left">
+                            単純XP-胸部<br />
+                            正面立位
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card w-100 mr-2 selectable">
+                      <div class="card-header selected-target observation-bg---past">
+                        画像
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item pb-2">
+                          <p>2017/08/30</p>
+                          <p class="observation text-left">内服：<br /></p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card w-100 mr-2 selectable">
+                      <div class="card-header selected-target observation-bg---past">
+                        注射
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item pb-2">
+                          <p>2017/05/10</p>
+                          <p class="observation text-left">
+                            (1)生理食塩液 20 ml<br />
+                            ガスター注射用 20 mg
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card w-100 mr-2 selectable">
+                      <div class="card-header selected-target observation-bg---past">
+                        処置
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item pb-2">
+                          <p>2017/05/10</p>
+                          <p class="observation text-left">
+                            創傷処置2(半肢・頭部・頸部・顔)
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card w-100 selectable">
+                      <div class="card-header selected-target observation-bg---past">
+                        リハ
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item pb-2">
+                          <p>2017/05/10</p>
+                          <p class="observation text-left inner">
+                            何もないときはカードごと非表示となります
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="border-top mx-3 my-4 pt-4">
+                  <div class="d-flex justify-content-between">
+                    <h4 class="text-left">
+                      カルテ履歴一覧<i class="far fa-question-circle ml-3"></i>
+                    </h4>
+                    <div>
+                      <ul class="mb-0 mt-1">
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="option1" />
+                          <label class="form-check-label" for="inlineRadio1">すべて</label>
+                        </li>
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="option2" />
+                          <label class="form-check-label" for="inlineRadio2">診療記録</label>
+                        </li>
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                            value="option3" />
+                          <label class="form-check-label" for="inlineRadio3">処方</label>
+                        </li>
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                            value="option4" />
+                          <label class="form-check-label" for="inlineRadio4">注射</label>
+                        </li>
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5"
+                            value="option5" />
+                          <label class="form-check-label" for="inlineRadio5">処置</label>
+                        </li>
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6"
+                            value="option6" />
+                          <label class="form-check-label" for="inlineRadio6">検体</label>
+                        </li>
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7"
+                            value="option7" />
+                          <label class="form-check-label" for="inlineRadio7">病理</label>
+                        </li>
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8"
+                            value="option8" />
+                          <label class="form-check-label" for="inlineRadio8">生理</label>
+                        </li>
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio9"
+                            value="option9" />
+                          <label class="form-check-label" for="inlineRadio9">放射線</label>
+                        </li>
+                        <li class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio10"
+                            value="option10" />
+                          <label class="form-check-label" for="inlineRadio10">理学</label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <table class="bg-white shadow-sm table rireki">
+                    <thead>
+                      <tr>
+                        <th class="text-center" scope="col">診察</th>
+                        <th class="text-center" scope="col">診療記事</th>
+                        <th class="text-center" scope="col">処方</th>
+                        <th class="text-center" scope="col">検体検査</th>
+                        <th class="text-center" scope="col">その他</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-left">
+                      <tr>
+                        <td class="rireki-exam" scope="row">
+                          <p class="font-weight-bold">2018年</p>
+                          <p class="border-bottom pb-2 text-right">
+                            <span class="h3">12</span> <span>月</span>
+                            <span class="h3">12</span> <span>日</span>
+                            <span>（水）</span>
+                          </p>
+                          <p class="">ユニシス病院</p>
+                          <p class="">内科</p>
+                          <p class="">佐々木信一郎</p>
+                          <hr />
+                          <div class="text-center">
+                            <span class="M-btn ripple"><a href="#" class="align-middle"><i class="fas fa-edit mr-2"></i>カルテ編集</a></span>
+                          </div>
+                        </td>
+                        <td class="rireki-report" scope="row">
+                          <p class="text-right">
+                            <a href="#"><i class="fas fa-thumbtack"></i></a>
+                          </p>
+                          <div class="selectable">
+                            <p class="selected-target px-1 py-1">
+                              胃がキリキリ痛む数日間安静が必要問題が見られず吐き気がする<br />
+                              最近、疲れやすい吐き気がする<br />
+                              水分バランスと栄養状態の管理腹部にしこりがみられる<br />
+                              最近疲れやすい<br />
+                              定期的な通院が必要<br />
+                              打撲<br />
+                              骨折<br />
+                              捻挫<br />
+                              危険因子なし<br />
+                              本日の朝胃がキリキリ痛む<br />
+                              主訴：腹痛<br />
+                              １ヶ月前より続く上腹部の鈍痛。空腹時に痛む。<br />
+                              発熱は無し。<br />
+                              仕事柄、夜の飲酒が多く、朝、胃がもたれることが多い。<br />
+                              そういうときには胃腸薬（消化を促進する）を服用する。<br />
+                              問診：内科問診<br />
+                              腹痛がする<br />
+                              体温：36.5℃<br />
+                              軟便ではない。
+                            </p>
+                          </div>
+                        </td>
+                        <td class="rireki-treat" scope="row">
+                          <p class="text-right">
+                            <a href="#"><i class="fas fa-thumbtack mr-2"></i></a>
+                          </p>
+                          <div class="selectable">
+                            <p class="selected-target px-1 py-1">
+                              内服<br />
+                              (1)ザンタック錠 １５０ ｍｇ<br />
+                              ガスターＤ錠２０ｍｇ<br />
+                              (2)ムコスタ錠 １００ｍｇ
+                            </p>
+                          </div>
+                        </td>
+                        <td class="rireki-specimena" scope="row">
+                          <p class="text-right">
+                            <a href="#"><i class="fas fa-thumbtack mr-2"></i></a>
+                          </p>
+                          <div class="selectable">
+                            <p class="selected-target px-1 py-1">
+                              (1) 血液学的検査/血液一般 <br />
+                              末梢血４項目, 血小板セットＣ<br />
+                              総蛋白, アルブミ, ｱﾙﾌﾐﾝ・ｸﾞﾛﾌﾞﾘﾝ比,
+                              総ビリルビン,ＡＳＴ,ＡＬＴ,ＬＤＨ, γ-ＧＴＰ,
+                              ＣＰＫ,
+                              ＡＬＰ,尿素窒素（ＵＮ）,クレアチニン,総コレステロール,
+                              中性脂肪, HDLコレステロール,
+                              ＬＤＬコレステロールナトリウム ,K,クロール
+                            </p>
+                          </div>
+                        </td>
+                        <td class="rireki-etc" scope="row">
+                          <div class="border-bottom">
+                            <p class="d-flex justify-content-between">
+                              <b>生理</b><a href="#"><i class="fas fa-thumbtack mr-2"></i></a>
+                            </p>
+                            <div class="selectable">
+                              <p class="selected-target px-1 py-1">
+                                (1)生理食塩液 ２０ｍＬ<br />
+                                ガスター注射用２０ｍｇ
+                              </p>
+                            </div>
+                          </div>
+                          <div class="mt-3 border-bottom ">
+                            <p class="d-flex justify-content-between">
+                              <b>放射線</b><a href="#"><i class="fas fa-thumbtack mr-2"></i></a>
+                            </p>
+                            <div class="selectable">
+                              <p class="selected-target px-1 py-1">
+                                (1)生理食塩液 ２０ｍＬ<br />
+                                ガスター注射用２０ｍｇ
+                              </p>
+                            </div>
+                          </div>
+                          <div class="mt-3 border-bottom">
+                            <p class="d-flex justify-content-between">
+                              <b>注射</b><a href="#"><i class="fas fa-thumbtack mr-2"></i></a>
+                            </p>
+                            <div class="selectable">
+                              <p class="selected-target px-1 py-1">
+                                (1)生理食塩液 ２０ｍＬ<br />
+                                ガスター注射用２０ｍｇ
+                              </p>
+                            </div>
+                          </div>
+                          <div class="mt-3 border-bottom">
+                            <p class="d-flex justify-content-between">
+                              <b>処置</b><a href="#"><i class="fas fa-thumbtack mr-2"></i></a>
+                            </p>
+                            <div class="selectable">
+                              <p class="selected-target px-1 py-1">
+                                (1)生理食塩液 ２０ｍＬ<br />
+                                ガスター注射用２０ｍｇ
+                              </p>
+                            </div>
+                          </div>
+                          <div class="mt-3">
+                            <p class="d-flex justify-content-between">
+                              <b>理学</b><a href="#"><i class="fas fa-thumbtack mr-2"></i></a>
+                            </p>
+                            <div class="selectable">
+                              <p class="selected-target px-1 py-1">
+                                (1)生理食塩液 ２０ｍＬ<br />
+                                ガスター注射用２０ｍｇ
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="rireki-exam" scope="row">
+                          <p class="font-weight-bold">2018年</p>
+                          <p class="border-bottom pb-2 text-right">
+                            <span class="h3">09</span> <span>月</span>
+                            <span class="h3">09</span> <span>日</span>
+                            <span>（水）</span>
+                          </p>
+                          <p class="">ユニシス病院</p>
+                          <p class="">内科</p>
+                          <p class="">佐々木信一郎</p>
+                        </td>
+                        <td class="rireki-report" scope="row">
+                          胃がキリキリ痛む数日間安静が必要問題が見られず吐き気がする<br />
+                          最近、疲れやすい吐き気がする<br />
+                          水分バランスと栄養状態の管理腹部にしこりがみられる<br />
+                          最近疲れやすい<br />
+                          定期的な通院が必要<br />
+                          打撲<br />
+                          骨折<br />
+                          捻挫<br />
+                          危険因子なし<br />
+                          本日の朝胃がキリキリ痛む<br />
+                          主訴：腹痛<br />
+                          １ヶ月前より続く上腹部の鈍痛。空腹時に痛む。<br />
+                          発熱は無し。<br />
+                          仕事柄、夜の飲酒が多く、朝、胃がもたれることが多い。<br />
+                          そういうときには胃腸薬（消化を促進する）を服用する。<br />
+                          問診：内科問診<br />
+                          腹痛がする<br />
+                          体温：36.5℃<br />
+                          軟便ではない。
+                        </td>
+                        <td class="rireki-treat" scope="row">
+                          内服<br />
+                          (1)ザンタック錠 １５０ ｍｇ<br />
+                          ガスターＤ錠２０ｍｇ<br />
+                          (2)ムコスタ錠 １００ｍｇ
+                        </td>
+                        <td class="rireki-specimena" scope="row">
+                          ●(1) 血液学的検査/血液一般 <br />
+                          末梢血４項目, 血小板セットＣ<br />
+                          総蛋白, アルブミ, ｱﾙﾌﾐﾝ・ｸﾞﾛﾌﾞﾘﾝ比,
+                          総ビリルビン,ＡＳＴ,ＡＬＴ,ＬＤＨ, γ-ＧＴＰ, ＣＰＫ,
+                          ＡＬＰ,尿素窒素（ＵＮ）,クレアチニン,総コレステロール,
+                          中性脂肪, HDLコレステロール,
+                          ＬＤＬコレステロールナトリウム ,K,クロール
+                        </td>
+                        <td class="rireki-etc" scope="row"></td>
+                      </tr>
+                      <tr>
+                        <td class="rireki-exam" scope="row">
+                          <p class="font-weight-bold">2018年</p>
+                          <p class="border-bottom pb-2 text-right">
+                            <span class="h3">09</span> <span>月</span>
+                            <span class="h3">09</span> <span>日</span>
+                            <span>（水）</span>
+                          </p>
+                          <p class="">ユニシス病院</p>
+                          <p class="">内科</p>
+                          <p class="">佐々木信一郎</p>
+                        </td>
+                        <td class="rireki-report" scope="row">
+                          胃がキリキリ痛む数日間安静が必要問題が見られず吐き気がする<br />
+                          最近、疲れやすい吐き気がする<br />
+                          水分バランスと栄養状態の管理腹部にしこりがみられる<br />
+                          最近疲れやすい<br />
+                          定期的な通院が必要<br />
+                          打撲<br />
+                          骨折<br />
+                          捻挫<br />
+                          危険因子なし<br />
+                          本日の朝胃がキリキリ痛む<br />
+                          主訴：腹痛<br />
+                          １ヶ月前より続く上腹部の鈍痛。空腹時に痛む。<br />
+                          発熱は無し。<br />
+                          仕事柄、夜の飲酒が多く、朝、胃がもたれることが多い。<br />
+                          そういうときには胃腸薬（消化を促進する）を服用する。<br />
+                          問診：内科問診<br />
+                          腹痛がする<br />
+                          体温：36.5℃<br />
+                          軟便ではない。
+                        </td>
+                        <td class="rireki-treat" scope="row">
+                          内服<br />
+                          (1)ザンタック錠 １５０ ｍｇ<br />
+                          ガスターＤ錠２０ｍｇ<br />
+                          (2)ムコスタ錠 １００ｍｇ
+                        </td>
+                        <td class="rireki-specimena" scope="row">
+                          ●(1) 血液学的検査/血液一般 <br />
+                          末梢血４項目, 血小板セットＣ<br />
+                          総蛋白, アルブミ, ｱﾙﾌﾐﾝ・ｸﾞﾛﾌﾞﾘﾝ比,
+                          総ビリルビン,ＡＳＴ,ＡＬＴ,ＬＤＨ, γ-ＧＴＰ, ＣＰＫ,
+                          ＡＬＰ,尿素窒素（ＵＮ）,クレアチニン,総コレステロール,
+                          中性脂肪, HDLコレステロール,
+                          ＬＤＬコレステロールナトリウム ,K,クロール
+                        </td>
+                        <td class="rireki-etc" scope="row"></td>
+                      </tr>
+                      <tr>
+                        <td class="rireki-exam" scope="row">
+                          <p class="font-weight-bold">2018年</p>
+                          <p class="border-bottom pb-2 text-right">
+                            <span class="h3">09</span> <span>月</span>
+                            <span class="h3">09</span> <span>日</span>
+                            <span>（水）</span>
+                          </p>
+                          <p class="">ユニシス病院</p>
+                          <p class="">内科</p>
+                          <p class="">佐々木信一郎</p>
+                        </td>
+                        <td class="rireki-report" scope="row">
+                          胃がキリキリ痛む数日間安静が必要問題が見られず吐き気がする<br />
+                          最近、疲れやすい吐き気がする<br />
+                          水分バランスと栄養状態の管理腹部にしこりがみられる<br />
+                          最近疲れやすい<br />
+                          定期的な通院が必要<br />
+                          打撲<br />
+                          骨折<br />
+                          捻挫<br />
+                          危険因子なし<br />
+                          本日の朝胃がキリキリ痛む<br />
+                          主訴：腹痛<br />
+                          １ヶ月前より続く上腹部の鈍痛。空腹時に痛む。<br />
+                          発熱は無し。<br />
+                          仕事柄、夜の飲酒が多く、朝、胃がもたれることが多い。<br />
+                          そういうときには胃腸薬（消化を促進する）を服用する。<br />
+                          問診：内科問診<br />
+                          腹痛がする<br />
+                          体温：36.5℃<br />
+                          軟便ではない。
+                        </td>
+                        <td class="rireki-treat" scope="row">
+                          内服<br />
+                          (1)ザンタック錠 １５０ ｍｇ<br />
+                          ガスターＤ錠２０ｍｇ<br />
+                          (2)ムコスタ錠 １００ｍｇ
+                        </td>
+                        <td class="rireki-specimena" scope="row">
+                          ●(1) 血液学的検査/血液一般 <br />
+                          末梢血４項目, 血小板セットＣ<br />
+                          総蛋白, アルブミ, ｱﾙﾌﾐﾝ・ｸﾞﾛﾌﾞﾘﾝ比,
+                          総ビリルビン,ＡＳＴ,ＡＬＴ,ＬＤＨ, γ-ＧＴＰ, ＣＰＫ,
+                          ＡＬＰ,尿素窒素（ＵＮ）,クレアチニン,総コレステロール,
+                          中性脂肪, HDLコレステロール,
+                          ＬＤＬコレステロールナトリウム ,K,クロール
+                        </td>
+                        <td class="rireki-etc" scope="row"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /content -->
+              </div>
+              <!-- /page content -->
+            </div>
+          </div>
+          <!-- container -->
+
+          <hr />
+          <footer>
+            <p>&copy; 2018 - Sky Medical Inc.</p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(".04do").click(function () {
+        var riha_text = $('.inner').text();
+				localStorage.setItem("pdash2",riha_text);
+      })
+    </script>
+
+    <script>
+      window.addEventListener("storage", function (evt) {
+        var backto = localStorage.getItem("backto");
+        if(backto == 1){
+          localStorage.removeItem("pdash");
+          localStorage.removeItem("pdash2");
+          location.href = "01.html";
+        }
+      })
+    </script>
+
+    <script>
+      $(".selectable").click(function () {
+        if ($(this).hasClass("do-selected")) {
+          $(this).removeClass("do-selected");
+        } else {
+          $(this).addClass("do-selected");
+        }
+      });
+
+    </script>
+
+    <script src="../../Scripts/vender/bootstrap/popper.min.js"></script>
+    <script src="../../Scripts/vender/bootstrap/bootstrap.min.js"></script>
+    <script src="../../Scripts/ripple.js"></script>
+  </body>
+
+</html>

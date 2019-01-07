@@ -1,0 +1,135 @@
+﻿.tbl-bdr table, .tbl-bdr td, .tbl-bdr th {
+    border-collapse: collapse;
+    border: 1px solid #333;
+}
+
+.left-end {
+    width: 50px;
+    height: 500px;
+    position: fixed;
+    z-index: 1;
+    top: 350px;
+    left: 0px;
+}
+.right-end {
+    width: 50px;
+    height: 500px;
+    position: fixed;
+    z-index: 1;
+    top: 350px;
+    right: 0px;
+}
+
+.order-line{
+    text-align: left;
+}
+
+
+/* チェックボックスのデザイン変更（テキストの矩形領域でチェック可能に変更） */
+input[type=checkbox].btnTypeChkBox {
+    display: none;
+}
+
+input[type="checkbox"].checkbox02:checked + label {
+    background: #31A9EE;
+    color: #ffffff;
+}
+
+.check_label:hover {
+    background-color: #E2EDF9;
+}
+
+.check_label {
+    display: block;
+    float: left;
+    margin: 5px;
+    width: 100px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+    color: #31A9EE;
+    border: 2px solid #006DD9;
+    border-radius: 5px;
+}
+
+.check_label_middle {
+    display: table-cell;
+    float: left;
+    margin: 2px;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+    color: #31A9EE;
+    border: 2px solid #006DD9;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+
+.chart_card_title {
+    background: #0094ff;
+    height: 40px;
+}
+
+.chart-card-grp {
+    display: inline-flex;
+    margin-left: 20px;
+}
+
+
+.chart-card-head {
+    background: #daeef3;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 3px;
+}
+
+.chart-search-card-head {
+    background: #cbc5c5;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 3px;
+}
+
+/* 履歴カルテカードヘッダー */
+.chart-hist-card-head {
+    background: #C5D9F1;
+    padding:0px;
+}
+
+/* 本日カルテカードヘッダー */
+.chart-today-card-head {
+    background: #C5D9F1;
+    padding: 0px;
+}
+
+/* 編集カルテカードヘッダー */
+.chart-edit-card-head {
+    background: #C5D9F1;
+}
+
+/* ドロップダウンメニューをマウスホバーで開く */
+.drop-hover:hover > .dropdown-menu {
+    display: block !important;
+}
+
+/* 履歴カルテカードヘッダー */
+.chart-hist-drug-head {
+    background: #dce6f1;
+    border-style: solid;
+    border-width: 1px
+}
+
+/* 各機能ボタン */
+.chart-function-btn {
+    margin-left: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

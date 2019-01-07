@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>デザインシステム　スカイカルテ！</title>
+		<script src="../../Scripts/vender/jquery/jquery-3.3.1.min.js"></script>
+		<script src="../../Scripts/vender/jquery/modernizr-2.8.3.js"></script>
+
+		<link href="../../Content/common.css" rel="stylesheet" />
+
+		<link href="../../Content/style.css" rel="stylesheet" />
+		<link href="../../Content/DrugOrder.css" rel="stylesheet" />
+
+		<link href="../../Content/vender/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../Content/vender/fontawesome/all.min.css" rel="stylesheet" />
+
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+	</head>
+
+	<body>
+
+		<!-- header -->
+		<header class="header sticky-top">
+			<div class="primary-bar d-flex justify-content-between">
+				<h1 class="h3 d-inline-block text-white">
+					<span class="font-weight-bold mr-1">Sky</span>Karte
+				</h1>
+			</div>
+		</header>
+		<!-- /header -->
+
+		<!-- wrapper -->
+		<div class="wrapper">
+
+			<!-- content -->
+			<div class="content">
+				<h2>文字組</h2>
+				<!-- table -->
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th class="text-muted text-center" scope="col">NO</th>
+							<th class="text-muted text-center" scope="col">数値</th>
+							<th class="text-muted text-center" scope="col">単語・記号</th>
+							<th class="text-muted text-center" scope="col">氏名</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="exam__item exam__item--done">
+							<td class="text-center" scope="row">99</td>
+							<td class="text-right">1234567890</td>
+							<td class="text-center">真ん中寄</td>
+							<td class="text-left">左寄　太郎</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- table -->
+				<hr>
+				<h2>アイコン　状態</h2>
+				<!-- table -->
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th class="text-muted text-center" scope="col">なし</th>
+							<th class="text-muted text-center" scope="col">未実施</th>
+							<th class="text-muted text-center" scope="col">オーダー</th>
+							<th class="text-muted text-center" scope="col">結果待ち</th>
+							<th class="text-muted text-center" scope="col">済</th>
+							<th class="text-muted text-center" scope="col">結果画像</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="exam__item exam__item--done">
+							<td class="text-center"><i class="fas fa-minus"></i></td>
+							<td class="text-center text-danger font-weight-bold">未</td>
+							<td class="text-center"><i class="fas fa-check text-success"></i></td>
+							<td class="text-center"><i class="fas fa-spinner"></i></td>
+							<td class="text-center"><i class="fas fa-check-double text-success"></i></td>
+							<td class="text-center"><a href="#"><i class="far fa-image"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- table -->
+				<hr>
+				<h2>アイコン　編集</h2>
+				<!-- table -->
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th class="text-muted text-center" scope="col">コメント</th>
+							<th class="text-muted text-center" scope="col">カレンダー</th>
+							<th class="text-muted text-center" scope="col">ハテナ</th>
+							<th class="text-muted text-center" scope="col">ピン</th>
+							<th class="text-muted text-center" scope="col">編集</th>
+							<th class="text-muted text-center" scope="col">ゴミ箱</th>
+							<th class="text-muted text-center" scope="col">プラス</th>
+							<th class="text-muted text-center" scope="col">マイナス</th>
+							<th class="text-muted text-center" scope="col">コピー</th>
+							<th class="text-muted text-center" scope="col">登録</th>
+							<th class="text-muted text-center" scope="col">まとめる</th>
+							<th class="text-muted text-center" scope="col">更新</th>
+							<th class="text-muted text-center" scope="col">上</th>
+							<th class="text-muted text-center" scope="col">下</th>
+							<th class="text-muted text-center" scope="col">右</th>
+							<th class="text-muted text-center" scope="col">左</th>
+							<th class="text-muted text-center" scope="col">拡大</th>
+							<th class="text-muted text-center" scope="col">遷移</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="exam__item exam__item--done">
+							<td class="text-center"><i class="far fa-comment-dots"></i></td>
+							<td class="text-center"><i class="fas fa-calendar-alt"></i></td>
+							<td class="text-center"><i class="far fa-question-circle"></i></td>
+							<td class="text-center"><i class="fas fa-thumbtack"></i></td>
+							<td class="text-center"><i class="fa fa-edit"></i></td>
+							<td class="text-center"><i class="fa fa-trash-alt"></i></td>
+							<td class="text-center"><i class="fas fa-plus"></i></td>
+							<td class="text-center"><i class="fas fa-minus"></i></td>
+							<td class="text-center"><i class="fa fa-copy"></i></td>
+							<td class="text-center"><i class="fa fa-user-edit"></i></td>
+							<td class="text-center"><i class="fa fa-plus-square"></i></td>
+							<td class="text-center"><i class="fa fa-redo-alt"></i></td>
+							<td class="text-center"><i class="fas fa-chevron-up"></i></td>
+							<td class="text-center"><i class="fas fa-chevron-down"></i></td>
+							<td class="text-center"><i class="fas fa-chevron-right"></i></td>
+							<td class="text-center"><i class="fas fa-chevron-left"></i></td>
+							<td class="text-center"><i class="fas fa-expand"></i></td>
+							<td class="text-center"><i class="fas fa-external-link-alt"></i></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- table -->
+				<hr>
+				<h2>アイコン　行為</h2>
+				<!-- table -->
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th class="text-muted text-center" scope="col">処方</th>
+							<th class="text-muted text-center" scope="col">注射</th>
+							<th class="text-muted text-center" scope="col">処置</th>
+							<th class="text-muted text-center" scope="col">検体</th>
+							<th class="text-muted text-center" scope="col">生理</th>
+							<th class="text-muted text-center" scope="col">X線画像</th>
+							<th class="text-muted text-center" scope="col">リハ</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="exam__item exam__item--done">
+							<td class="text-center"><i class="fa fa-pills"></i></td>
+							<td class="text-center"><i class="fa fa-syringe"></i></td>
+							<td class="text-center"><i class="fa fa-first-aid"></i></td>
+							<td class="text-center"><i class="fa fa-vial"></i></td>
+							<td class="text-center"><i class="fa fa-heartbeat"></i></td>
+							<td class="text-center"><i class="fa fa-x-ray"></i></td>
+							<td class="text-center"><i class="fa fa-wheelchair"></i></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- table -->
+
+				<h2>アイコン　その他</h2>
+				<!-- table -->
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th class="text-muted text-center" scope="col">診療所</th>
+							<th class="text-muted text-center" scope="col">個人</th>
+							<th class="text-muted text-center" scope="col">設定</th>
+							<th class="text-muted text-center" scope="col">ログアウト</th>
+							<th class="text-muted text-center" scope="col">アラート</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="exam__item exam__item--done">
+							<td class="text-center"><i class="fas fa-hospital-alt"></i></td>
+							<td class="text-center"><i class="fas fa-user"></i></td>
+							<td class="text-center"><i class="fas fa-cog"></i></td>
+							<td class="text-center"><i class="fas fa-sign-out-alt"></i></td>
+							<td class="text-center"><i class="fas fa-exclamation-triangle"></i></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- table -->
+
+				<hr>
+
+				<h2>ボタン</h2>
+								<!-- table -->
+								<table class="table table-bordered table-hover">
+										<thead>
+											<tr>
+												<th class="text-muted text-center" scope="col">Floating Action Button</th>
+												<th class="text-muted text-center" scope="col">プライマリー</th>
+												<th class="text-muted text-center" scope="col">セカンダリー</th>
+												<th class="text-muted text-center" scope="col">テキスト</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="exam__item exam__item--done">
+												<td class="text-center"><span class="fab-btn ripple" style="position: relative;"><a href="#" class="align-middle">FAB</a></span></td>
+												<td class="text-center"><span class="M-btn ripple"><a href="#" class="align-middle">プライマリー</a></span></td>
+												<td class="text-center"><span class="M-btn-OL ripple"><a href="#" class="align-middle">アウトライン</a></span></td>
+												<td class="text-center"><i class="fas fa-sign-out-alt"></i></td>
+											</tr>
+										</tbody>
+									</table>
+									<!-- table -->
+
+
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<li class="page-item">
+							<a class="page-link" href="#" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+							</a>
+						</li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item">
+							<a class="page-link" href="#" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+								<span class="sr-only">Next</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+
+
+			</div>
+			<!-- /content -->
+
+		</div>
+		<!-- /wrapper -->
+
+		<!-- footer -->
+		<footer class="footer">
+			<p>&copy; 2018 - Sky Medical Inc.</p>
+		</footer>
+		<!-- /footer -->
+
+		<script src="../../Scripts/vender/bootstrap/popper.min.js"></script>
+		<script src="../../Scripts/vender/bootstrap/bootstrap.min.js"></script>
+
+		<script src="../../Scripts/ripple.js"></script>
+
+	</body>
+
+</html>

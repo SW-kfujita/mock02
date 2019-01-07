@@ -1,0 +1,301 @@
+/*=========================================================================
+//
+// Module
+//
+==========================================================================*/
+
+/* Primary bar */
+.primary-bar {
+	/*background:#90caf9; */
+	background: #fff;
+	color: #90caf9;
+	height: 40px;
+	line-height: 40px;
+	padding: 0px 16px;
+}
+
+/* Secondary bar */
+.secondary-bar {
+	background:#fff;
+	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+	height: 60px;
+	line-height: 24px;
+}
+
+/* Data table */
+.data-table {
+	background: #fff;
+	border-bottom: 1px solid #e0e0e0;
+	line-height: 2;
+	width: 100%;
+}
+.data-table tr {
+	border-top: 1px solid #e0e0e0;
+}
+.data-table th {
+	background: #fafafa;
+	border-bottom: 2px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+}
+.data-table td {
+	border-top: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+	min-width: 2rem;
+	max-width: 8rem;
+}
+.data-table th:last-child,.data-table td:last-child {
+	border-right: 0;
+}
+.data-table tr:hover {
+background-color: rgba(0,0,0,.075);
+}
+
+/* Data card */
+.data-card {
+	border-radius: 4px;
+	padding: 1rem;
+	margin-right: 2%;
+  transition: 0.3s;
+	width: 100%;
+}
+.data-card__header {
+	border-left: 4px solid #ddd;
+	padding-left: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+.data-card__comment {
+	font-size: 90%;
+	height: 80px;
+	overflow-y: auto;
+}
+.data-card:hover {
+	box-shadow:0px 0px 10px 1px #ccc;
+}
+.data-card ul li a {
+	border-bottom: 1px dashed #ccc;
+	text-decoration: none;
+}
+
+
+/* Buttons */
+/* material button */
+.M-btn {
+  background: #002984 ;
+  border-radius: 24px;
+  cursor: pointer;
+  display: inline-block;
+  transition: 0.3s;
+  padding: 2px 12px;
+}
+.M-btn a {
+  color: #fff !important;
+	text-decoration: none !important;
+}
+.M-btn:hover {
+	background: #49599a;
+}
+
+/* outline button */
+.M-btn-OL {
+	background: #FFF;
+	border: 1px solid #ccc ;
+	border-radius: 24px;
+  cursor: pointer;
+  display: inline-block;
+  transition: 0.3s;
+  padding: 2px 12px;
+}
+.M-btn-OL a {
+	color: #555;
+	text-decoration: none !important;
+}
+.M-btn-OL:hover {
+	background: #ccc;
+}
+
+/* link button */
+.M-btn-lk {
+  cursor: pointer;
+  display: inline-block;
+  transition: 0.3s;
+  padding: 8px 12px;
+}
+.M-btn-lk:hover {
+	font-weight: bold;
+}
+
+/* Button ripple */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple .rp-effect {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.35;
+  transform: scale(0);
+  background: #FFF;
+  animation: ripple 700ms;
+  pointer-events: none; 
+}
+@-webkit-keyframes ripple {
+  to {
+    opacity: 0;
+    transform: scale(2.0);
+  }
+}
+@keyframes ripple {
+  to {
+    opacity: 0;
+    transform: scale(2.0);
+  }
+}
+/* plus-minus button */
+.PL-btn {
+	cursor: pointer;
+	margin-bottom: 0 !important;
+}
+.PL-btn-non {
+	transition: transform 0.3s ease-out;
+  transform: rotate(0deg);
+}
+.PL-btn-active {
+	transition: transform 0.3s ease-out;
+  transform: rotate(45deg);
+}
+
+/*=========================================================================
+//
+// State
+//
+==========================================================================*/
+
+.exam__item .dropdown-toggle::after {
+	font-family: "Font Awesome 5 Free";
+  content: "\f4ad";
+	border-top: 0em solid !important;
+}
+
+.selectable {
+	transition: all 0.3s ease-out;
+}
+.selectable:hover {
+	box-shadow:0px 0px 10px 1px #ccc;
+	cursor: pointer;
+}
+.do-selected .selected-target {
+	background: #ccc;
+}
+
+
+.observation {
+	max-height: 80px;
+	overflow: auto;
+}
+.observation-bg--base {
+	background: lightgoldenrodyellow;
+}
+.observation-bg---past {
+	background: lightcyan;
+}
+
+/* FAB button */
+.fab-btn {
+	position: fixed;
+	bottom: 16%;
+	right: 40px;
+	z-index: 99;
+	background: #002984 ;
+	text-align: center;
+    border-radius: 50%;
+	cursor: pointer;
+	display: block;
+    width: 80px;/*å¹…*/
+	height: 80px;/*é«˜ã•*/
+	line-height: 80px;
+	transition: 0.3s;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.12), 0 2px 2px 0 rgba(0,0,0,.24);
+  }
+  .fab-btn a {
+	color: #fff !important;
+	text-decoration: none !important;
+  }
+  .fab-btn:hover {
+	  background: #49599a;
+	  box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
+  }
+
+
+.rireki {
+	margin-bottom: 0;
+}
+
+.rireki th {
+	background: rgba(0, 0, 0, 0.03);
+}
+
+.rireki th,.rireki td {
+	border-right: 1px solid #ccc;
+}
+
+.rireki-exam  {
+	width: 10%;
+	min-width: 130px;
+}
+.rireki-report  {
+	width: 30%;
+}
+.rireki-treat  {
+	width: 20%;
+}
+.rireki-specimena  {
+	width: 20%;
+}
+.rireki-etc  {
+	width: 20%;
+}
+
+
+/*=========================================================================
+//
+// Page
+//
+==========================================================================*/
+
+/* ペイシェントダッシュボード */
+
+.p-dash {
+	width: 100%;
+}
+.p-dash__left,.p-dash__center,.p-dash__right {
+	width: 32%;
+}
+.p-dash__left {
+	margin-right: 2%;
+}
+.p-dash__center {
+	margin-right: 2%;
+}
+
+.p-dash__left .card {
+	height: 180px;
+	overflow-y: hidden;
+}
+.p-dash__center .card {
+	height: 180px;
+	overflow-y: hidden;
+}
+.p-dash__right .card {
+	height: 180px;
+	overflow-y: hidden;
+}
+
+.p-dash__center .ZenkaiShinryoReport .card {
+	height: 376px;
+	overflow-y: hidden;
+}
+
+.p-dash__right .ZenkaiShinryoDrug .card {
+	height: 376px;
+	overflow-y: hidden;
+}

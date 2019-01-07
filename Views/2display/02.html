@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>ペイシェントダッシュボード - スカイカルテ！</title>
+
+		<script src="../../Scripts/vender/jquery/jquery-3.3.1.min.js"></script>
+		<script src="../../Scripts/vender/jquery/modernizr-2.8.3.js"></script>
+
+		<link href="../../Content/common.css" rel="stylesheet" />
+
+		<link href="../../Content/style.css" rel="stylesheet" />
+
+		<link href="../../Content/vender/bootstrap/bootstrap.min.css" rel="stylesheet" />
+		<link href="../../Content/vender/fontawesome/all.min.css" rel="stylesheet" />
+
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+	</head>
+
+	<style type="text/css">
+		/* Buttons */
+		/* material button */
+		.scrol-btn {
+			background: #002984;
+			border-radius: 24px;
+			cursor: pointer;
+			display: inline-block;
+			transition: 0.3s;
+			padding: 8px 24px;
+			opacity: 1.0;
+			position: absolute;
+			bottom: 0px;
+			left: 12px;
+		}
+
+		.scrol-btn:hover {
+			background: #49599a;
+			opacity: 0.8;
+		}
+
+		.report-line {
+			padding-left: 10px;
+			vertical-align: top;
+		}
+
+		.order-line-header {
+			padding-left: 10px;
+		}
+
+		.order-line {
+			padding-left: 50px;
+		}
+
+
+		/* チェックボックスのデザイン変更（テキストの矩形領域でチェック可能に変更） */
+		input[type=checkbox].btnTypeChkBox {
+			display: none;
+		}
+
+		input[type="checkbox"].checkbox02:checked+label {
+			background: #31A9EE;
+			color: #ffffff;
+		}
+
+		.check_label:hover {
+			background-color: #E2EDF9;
+		}
+
+		.check_label_card_header {
+			display: table-cell;
+			float: left;
+			margin: 2px;
+			width: 100%;
+			height: 44px;
+			text-align: center;
+			line-height: 30px;
+			padding-left: 0px;
+			padding-right: 0px;
+			cursor: pointer;
+			color: #000000;
+			background: #f7f7f7;
+			border-bottom-left-radius: 0px;
+			border-bottom-right-radius: 0px;
+			border-top: 0px;
+			border-top: 0px;
+			border-bottom: 0.9px solid #dfdfdf;
+			vertical-align: middle;
+			padding-top: 5px;
+			margin-left: 0px;
+			margin-right: 0px;
+			margin-bottom: 16px;
+		}
+
+		/* レイアウト変更用 */
+		.item {
+			background: #ddd;
+			padding: 10px;
+			border-radius: 8px;
+			border: 3px solid #ccc;
+			margin: 0px;
+			padding: 0px;
+		}
+
+		/* グリッド　コンテナ */
+		.container {
+			max-width: 100%;
+			display: grid;
+			gap: 10px;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+			grid-template-rows: 59px 59px 59px 59px 59px 59px 59px 59px 59px 59px 59px 59px;
+			margin: 0;
+		}
+
+		/* カードボディー */
+		.patient-dsb-card-body {
+			overflow-y: hidden;
+		}
+
+		/*オレンジ・ラベル(基礎疾患)*/
+		.OrangeLabel-B {
+			grid-column: 1 / 3;
+			grid-row: 1 / span 6;
+			background: #fc2;
+			border-color: #fa0;
+			height: 100%;
+		}
+
+		/* 前回診療情報表(記事)示グリッドカラム */
+		.ZenkaiShinryoReport-B {
+			grid-column: 3 / 5;
+			grid-row: 1 / span 9;
+			background: #fc2;
+			border-color: #fa0;
+			height: 100%;
+		}
+
+		/* 前回診療情報表示(処方)グリッドカラム */
+		.ZenkaiShinryoDrug-B {
+			grid-column: 5 / 7;
+			grid-row: 1 / span 9;
+			background: #fc2;
+			border-color: #fa0;
+			height: 100%;
+		}
+
+		/*問診*/
+		.Monshin-B {
+			grid-column: 1 / 2;
+			grid-row: 7 / span 3;
+			background: #fc2;
+			border-color: #fa0;
+			height: 100%;
+		}
+
+		/*バイタル*/
+		.Vital-B {
+			grid-column: 2 / 3;
+			grid-row: 7 / span 3;
+			background: #fc2;
+			border-color: #fa0;
+			height: 100%;
+		}
+
+		/*患者予定オーダ*/
+		.KanjyaYoteiOrder-B {
+			grid-column: 1 / 2;
+			grid-row: 10 / span 3;
+			background: #fc2;
+			border-color: #fa0;
+			height: 100%;
+		}
+
+		/*事前検査結果*/
+		.JizenkennsaKekka-B {
+			grid-column: 2 / 3;
+			grid-row: 10 / span 3;
+			background: #fc2;
+			border-color: #fa0;
+			height: 100%;
+		}
+
+		/*前回検査結果*/
+		.ZenkaiKensaKekka {
+			grid-column: 3 / 4;
+			grid-row: 10 / span 3;
+			background: #fc2;
+			border-color: #fa0;
+			height: 100%;
+		}
+
+		/*前回画像*/
+		.ZenkaiGazo {
+			grid-column: 4 / 5;
+			grid-row: 10 / span 3;
+			background: #fc2;
+			border-color: #fa0;
+			height: 100%;
+		}
+
+		/*定期検査*/
+		.TeikiKensa {
+			grid-column: 5 / 6;
+			grid-row: 10 / span 3;
+			background: #fc2;
+			border-color: #fa0;
+			height: 100%;
+		}
+
+		/*定期処方*/
+		.TeikiShoho {
+			grid-column: 6 / 7;
+			grid-row: 10 / span 3;
+			background: #fc2;
+			border-color: #fa0;
+			height: 100%;
+		}
+
+	</style>
+
+	<body>
+		<!-- header -->
+		<header class="border-bottom w-100" style="position: fixed; top: 0; z-index: 99;">
+			<div class="primary-bar d-flex justify-content-between px-4">
+				<h1 class="h3 d-inline-block text-white mt-1"><span class="font-weight-bold mr-1">Sky</span>Karte</h1>
+				<div class="dropdown">
+					<a href="#" class="ml-4 mr-4 text-white"><i class="fas fa-hospital-alt mr-2"></i>スカイクリニック</a>
+					<a class="dropdown-toggle text-white" href="#" role="button" id="dropdownPersonalLink" data-toggle="dropdown"
+					 aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-user mr-2"></i>中村 岳夫
+					</a>
+					<div class="dropdown-menu" aria-labelledby="dropdownPersonalLink">
+						<a class="dropdown-item" href="#">設定</a>
+						<a class="dropdown-item" href="#">ログアウト</a>
+					</div>
+				</div>
+			</div>
+			<div class="secondary-bar d-flex">
+				<i class="fa fa-user fa-2x mx-4 mt-3"></i>
+				<div class="mt-1 mr-4">
+					<span class="d-block small">すかい イチロウ</span>
+					<span>須貝 一郎</span>
+				</div>
+				<div class="mt-1">
+					<span class="mr-2">49歳</span><br>
+					<span class="mr-2">昭和44年</span>
+					<span class="mr-2">9月13日生</span>
+				</div>
+			</div>
+		</header>
+		<!-- /header -->
+
+		<!-- wrapper -->
+		<div class="wrapper">
+
+			<!-- content -->
+			<div class="contentP">
+				<div class="02do"><span class="fab-btn ripple"><a href="#" class="align-middle">DOする</a></span></div>
+				<div class="p-dash d-flex">
+					<div class="p-dash__left">
+						<div class="OrangeLabel shadow-sm">
+							<div class="card">
+								<div class="card-header pt-2 pl-2 text-white" style="background: #ffb74d;">
+									<i class="fa fa-tag mr-2"></i>
+									<span class="font-weight-bold">オレンジ</span>・ラベル<br>
+									<span class="small ml-3 pl-3">Orange Label</span>
+								</div>
+								<div class="card-body">
+									<ul class="pl-0">
+										<li>所見：咽頭：発赤なし　扁桃：腫脹なし　胸部：呼吸音異常なし</li>
+										<li>主訴：空咳が続く。頭痛がある。</li>
+										<li>方針：抗生剤処方</li>
+										<li>考察：扁桃炎</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex mt-3">
+							<div class="Monshin w-50 mr-3 shadow-sm">
+								<div class="card">
+									<div class="card-header pt-1 pl-2">
+										<p class="mb-0 small text-muted">2015/04/02</p>
+										<span class="fa fa-expand" style="position: absolute; right: 4px; top: 4px;"></span>
+										<p class="mb-0"><i class="fa fa-file-signature mr-2"></i><span>問診</span></p>
+									</div>
+									<div class="card-body">
+										<ul class="pl-0">
+											<li>主訴：腹痛</li>
+											<li>病歴：無し</li>
+											<li>手術歴：無し</li>
+											<li>アレルギー：無し</li>
+											<li>飲酒：未回答</li>
+											<li>喫煙歴：無し</li>
+											<li>家族の喫煙歴：無し</li>
+											<li>診察に関する要望：未回答</li>
+											<li>ご要望・ご質問・伝達事項等：未回答</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="Vital w-50 shadow-sm">
+								<div class="card">
+									<div class="card-header pt-1 pl-2">
+										<p class="mb-0 small text-muted">2019/01/15</p>
+										<p class="mb-0"><i class="fa fa-heartbeat mr-2"></i><span>事前オーダー</span></p>
+									</div>
+									<div class="card-body">
+										<ul class="pl-0">
+											<li>体温：36.5℃</li>
+											<li>脈拍：70回/分</li>
+											<li>血圧：130/80 mmHg</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex mt-3">
+							<div class="KanjyaYoteiOrder w-50 mr-3 shadow-sm">
+								<div class="card">
+									<div class="card-header pt-1 pl-2">
+										<p class="mb-0 small text-muted">2019/01/15</p>
+										<span class="fa fa-expand" style="position: absolute; right: 4px; top: 4px;"></span>
+										<p class="mb-0"><i class="fa fa-pills mr-2"></i><span>事前オーダー</span></p>
+									</div>
+									<div class="card-body">
+										<table class="bg-white shadow-sm table table-hover">
+											<tbody>
+												<tr>
+													<td rowspan="4" style="width:10%; vertical-align: middle;">検体<br />(01)</td>
+													<td style="width:90%;text-align:left;">１回のみ</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td>尿一般<br />尿一般検査</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td>単独<br />ＧＯＴ、ＧＰＴ，血糖（空、随時）、ＣＰＫ、クレアチニン、中性脂肪、ＨＤＬ－Ｃ、ＬＤＬ－Ｃ、Ｎａ、ＣＬ、Ｋ<br />静脈採取</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td style="color: red;">至急</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="JizenkennsaKekka w-50 shadow-sm">
+								<div class="card">
+									<div class="card-header pt-1 pl-2">
+										<p class="mb-0 small text-muted">2019/01/15</p>
+										<span class="fa fa-expand" style="position: absolute; right: 4px; top: 4px;"></span>
+										<p class="mb-0"><i class="fa fa-vial mr-2"></i><span>事前結果</span></p>
+									</div>
+									<div class="card-body">
+										<div class="float-right">
+											<div class="text-center"><span class="M-btn ripple"><a href="#" class="align-middle"><i class="fas fa-external-link-alt"></i>結果参照</a></span></div>
+										</div>
+										<table class="bg-white shadow-sm table table-hover">
+											<thead class="">
+												<tr>
+													<th class="text-center" scope="col">検査項目</th>
+													<th class="text-center" scope="col">結果値</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="text-center" scope="row">尿ｳﾛﾋﾞﾘﾉｰｹﾞﾝ</td>
+													<td class="text-center">＋</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="p-dash__center">
+						<div class="ZenkaiShinryoReport shadow-sm">
+							<div class="card">
+								<div class="card-header pt-2 pl-2 chooseable-header" id="Last-Report-Header">
+									<p class="mb-0 small text-muted">2018/12/12</p>
+									<span class="fa fa-expand" style="position: absolute; right: 4px; top: 4px;"></span>
+									<p class="mb-0"><i class="fa fa-file-signature mr-2"></i><span>前回記事</span></p>
+								</div>
+								<div class="card-body">
+									<table>
+										<tbody id="report-src">
+											<tr>
+												<td class="report-line">
+													<ul class="pl-0">
+														<li class="inner">経過記録</li>
+														<li class="inner">S:特に変わったことはありません</li>
+														<li class="inner">O:検査成績はほぼ正常範囲内です</li>
+														<li style="text-indent:1em;">血圧：70／110</li>
+														<li class="inner">A:安定</li>
+														<li class="inner">P:現在の治療を継続してください</li>
+													</ul>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex mt-3">
+							<div class="KanjyaYoteiOrder w-50 mr-3 shadow-sm">
+								<div class="card">
+									<div class="card-header pt-1 pl-2">
+										<p class="mb-0 small text-muted">2018/12/12</p>
+										<span class="fa fa-expand" style="position: absolute; right: 4px; top: 4px;"></span>
+										<p class="mb-0"><i class="fa fa-vial mr-2"></i><span>前回結果</span></p>
+									</div>
+									<div class="card-body">
+										<div class="float-right">
+											<div class="text-center"><span class="M-btn ripple"><a href="#" class="align-middle"><i class="fas fa-external-link-alt"></i>結果参照</a></span></div>
+										</div>
+										<table class="bg-white shadow-sm table table-hover">
+											<thead class="">
+												<tr>
+													<th class="text-center" scope="col">検査項目</th>
+													<th class="text-center" scope="col">結果値</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="text-center" scope="row">AST(GOT)</td>
+													<td class="text-center" style="color: #FF0000;">39</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="JizenkennsaKekka w-50 shadow-sm">
+								<div class="card">
+									<div class="card-header pt-1 pl-2">
+										<p class="mb-0 small text-muted">2017/08/30</p>
+										<span class="fa fa-expand" style="position: absolute; right: 4px; top: 4px;"></span>
+										<p class="mb-0"><i class="fa fa-x-ray mr-2"></i><span>前回画像</span></p>
+									</div>
+									<div class="card-body">
+										<ul>
+											<li><a href="">
+													<h4>胸部X線</h4>
+												</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="p-dash__right">
+						<div class="ZenkaiShinryoDrug shadow-sm">
+							<div class="card">
+								<div class="card-header pt-2 pl-2 chooseable-header" id="Last-Drug-Header">
+									<p class="mb-0 small text-muted">2018/12/12</p>
+									<span class="fa fa-expand" style="position: absolute; right: 4px; top: 4px;" id="Last-Drug"></span>
+									<p class="mb-0"><i class="fa fa-pills mr-2"></i><span>前回処方</span></p>
+								</div>
+								<div class="card-body patient-dsb-card-body">
+									<table>
+										<tbody id="drug-src">
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line-header">
+													(1)　内服　社家[スカイDr／スカイDr／]
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid; border-width: 0px 0px 0px 0px; width: 50%; background: rgb(255, 255, 255);"
+												 class="order-line">
+													スローケー錠６００ｍｇ 1 錠
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid; border-width: 0px 0px 0px 0px; width: 50%; background: rgb(255, 255, 255);"
+												 class="order-line">
+													アテレックス錠１０ｍｇ 1 錠
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid; border-width: 0px 0px 0px 0px; width: 50%; background: rgb(255, 255, 255);"
+												 class="order-line">
+													ブロプレス錠１２ｍｇ 1 錠
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 1px 0px; width:50%; background: #ffffff;" class="order-line">
+													食後　朝 56 日分
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line-header">
+													(2)　内服　社家[スカイDr／スカイDr／]
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													マイスリー錠５ｍｇ 2 錠
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 1px 0px; width:50%; background: #ffffff;" class="order-line">
+													その他　寝る前 28 日分
+												</td>
+											</tr>
+
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line-header">
+													(3)　内服　社家[スカイDr／スカイDr／]
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													ノイロビタン錠 3 錠
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 1px 0px; width:50%; background: #ffffff;" class="order-line">
+													食後　朝昼夕 14 日分
+												</td>
+											</tr>
+
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line-header">
+													(4)　内服　社家[スカイDr／スカイDr／]
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													ビオスリー錠 3 錠
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 1px 0px; width:50%; background: #ffffff;" class="order-line">
+													食後　朝昼夕 20 日分
+												</td>
+											</tr>
+
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line-header">
+													(5)　内服　社家[スカイDr／スカイDr／]
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													エパデールS９００ｍｇ 1 包
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 1px 0px; width:50%; background: #ffffff;" class="order-line">
+													食直後　朝昼夕 56 日分
+												</td>
+											</tr>
+
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line-header">
+													(6)　内服　社家[スカイDr／スカイDr／]
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													ツムラ４７　釣藤散 7.5 ｇ
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 1px 0px; width:50%; background: #ffffff;" class="order-line">
+													食後　朝昼夕 28 日分
+												</td>
+											</tr>
+
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line-header">
+													(7)　内服　社家[スカイDr／スカイDr／]
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													ムコスタ錠１００ｍｇ 3 錠
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 1px 0px; width:50%; background: #ffffff;" class="order-line">
+													食後　朝昼夕 20 日分
+												</td>
+											</tr>
+
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line-header">
+													(8)　内服　社家[スカイDr／スカイDr／]
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													サラザック顆粒 3 ｇ
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													ナパ 1 ｇ
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													5 日分
+												</td>
+											</tr>
+
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line-header">
+													(9)　内服　社家[スカイDr／スカイDr／]
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													トランサミンカプセル２５０ 3 Cap
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 1px 0px; width:50%; background: #ffffff;" class="order-line">
+													食後　朝昼夕 5 日分
+												</td>
+											</tr>
+
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line-header">
+													(1)　頓服　社家[スカイDr／スカイDr／]
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													ロキソニン錠６０ｍｇ 1 錠
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 1px 0px; width:50%; background: #ffffff;" class="order-line">
+													疼痛時 14 回分
+												</td>
+											</tr>
+
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line-header">
+													(1)　外用　社家[スカイDr／スカイDr／]
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													モーラステープ（１袋７枚）（院内なし） 70 枚
+												</td>
+											</tr>
+											<tr>
+												<td style="border-style: solid;  border-width: 0px 0px 0px 0px; width:50%; background: #ffffff;" class="order-line">
+													１日１回腰に貼ってください 1 調剤
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<div class="text-center" style="width:100%;">
+										<span class="scrol-btn ripple fa fa-expand" style="width:96%; color:#ffffff; font-size:20px;" id="Last-Drug-Scro-Btn">
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex mt-3">
+							<div class="KanjyaYoteiOrder w-50 mr-3 shadow-sm">
+								<div class="card">
+									<div class="card-header pt-1 pl-2">
+										<p class="mb-0 small text-muted">2018/12/12</p>
+										<span class="fa fa-expand" style="position: absolute; right: 4px; top: 4px;"></span>
+										<p class="mb-0"><i class="fa fa-vial mr-2"></i><span>定期検査</span></p>
+									</div>
+									<div class="card-body">
+											<table class="bg-white shadow-sm table table-hover">
+												<tbody>
+													<tr>
+														<td rowspan="5" style="width:10%; vertical-align: middle;">検体<br />(01)</td>
+														<td style="width:90%;text-align:left;">１ヶ月ごと　前回2018/07/20</td>
+													</tr>
+													<tr style="text-align:left;">
+														<td>Ｇセット<br />ＴＰ、Ａｌｂ、血糖(空、随時)、ＢＵＮ、クレアチニン<br />ＬＤＨ、ＧＯＴ、ＧＰＴ、Ｎａ、ＣＬ、Ｋ、静脈採血</td>
+													</tr>
+													<tr style="text-align:left;">
+														<td>ＣＣ<br />末梢血液一般、静脈採血</td>
+													</tr>
+													<tr style="text-align:left;">
+														<td>単独<br />中性脂肪、ＨＤＬ－Ｃ、ＬＤＬ－Ｃ、静脈採血</td>
+													</tr>
+													<tr style="text-align:left;">
+														<td style="color: red;">至急</td>
+													</tr>
+													<tr>
+														<td rowspan="5" style="width:10%; vertical-align: middle;">検体<br />(02)</td>
+														<td style="width:90%;text-align:left;">３ヶ月ごと　前回2018/04/20</td>
+													</tr>
+													<tr style="text-align:left;">
+														<td>ＤＭ２点セット<br />血糖(空、随時)、ヘモグロビンＡ１Ｃ測定、静脈採血</td>
+													</tr>
+													<tr style="text-align:left;">
+														<td style="color: red;">至急</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+								</div>
+							</div>
+							<div class="JizenkennsaKekka w-50 shadow-sm">
+								<div class="card">
+									<div class="card-header pt-1 pl-2">
+										<p class="mb-0 small text-muted">2017/08/30</p>
+										<span class="fa fa-expand" style="position: absolute; right: 4px; top: 4px;"></span>
+										<p class="mb-0"><i class="fa fa-pills mr-2"></i><span>定期処方</span></p>
+									</div>
+									<div class="card-body">
+										<table class="bg-white shadow-sm table table-hover">
+											<tbody>
+												<tr>
+													<td rowspan="6" style="width:10%; vertical-align: middle;">内服<br />(01)</td>
+													<td colspan="3" style="width:90%;text-align:right;">社家[スカイ医師／スカイ医師／]</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td>リバロ錠１ｍｇ</td>
+													<td>1</td>
+													<td>錠</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td>スローケー６００ｍｇ</td>
+													<td>1</td>
+													<td>錠</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td>アテレック錠１０ｍｇ</td>
+													<td>1</td>
+													<td>錠</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td>ブロプレス錠１２ｍｇ</td>
+													<td>1</td>
+													<td>錠</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td>　食後　朝</td>
+													<td>35</td>
+													<td>日分</td>
+												</tr>
+
+												<tr>
+													<td rowspan="3" style="width:10%; vertical-align: middle;">内服<br />(02)</td>
+													<td colspan="3" style="width:90%;text-align:right;">社家[スカイ医師／スカイ医師／]</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td>マイスリー錠５ｍｇ</td>
+													<td>1</td>
+													<td>錠</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td>　食後　朝</td>
+													<td>30</td>
+													<td>日分</td>
+												</tr>
+
+												<tr>
+													<td rowspan="3" style="width:10%; vertical-align: middle;">内服<br />(03)</td>
+													<td colspan="3" style="width:90%;text-align:right;">社家[スカイ医師／スカイ医師／]</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td>ノイロビタン錠</td>
+													<td>3</td>
+													<td>錠</td>
+												</tr>
+												<tr style="text-align:left;">
+													<td>　食後　朝</td>
+													<td>35</td>
+													<td>日分</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- content -->
+
+			<!-- footer -->
+			<footer class="footer">
+				<p>&copy; 2018 - Sky Medical Inc.</p>
+			</footer>
+			<!-- /footer -->
+
+		</div>
+		<!-- /wrapper -->
+
+		<script>
+			$('.02do').click(function () {
+				var text = $('.inner').text();
+				// messageというキーに「こんにちはlocalStorage」という値を保存
+				localStorage.setItem("pdash", text);
+				// messageというキーに保存した値を取得して表示
+				var ls_text = localStorage.getItem("pdash");
+				location.href = "04.html";
+			})
+
+		</script>
+
+		<script>
+			/**
+			 * 患者ダッシュボード
+			 */
+			$(function () {
+
+				/*
+				 * 初期処理
+				 */
+				init();
+
+				/*
+				 * 選択可能なカードヘッダをクリック
+				 */
+				$('.chooseable-header').click(function () {
+
+					var id = $(this).attr('id');
+					if (id == 'Last-Report-Header' || id == 'Last-Drug-Header') {
+						var sel_report = $('#Last-Report-Header').attr('data-selected');
+						var sel_drug = $('#Last-Drug-Header').attr('data-selected');
+
+						if (sel_report == '1' || sel_drug == '1') {
+							var sel = $(this).attr('data-selected');
+							if ($(this).attr('data-selected') == '1') {
+								$(this).css('background-color', '#f7f7f7');
+								$(this).css('color', '#000000');
+								$(this).attr('data-selected', '0');
+							} else {
+								$(this).css('background-color', '#31a9ee');
+								$(this).css('color', '#ffffff');
+								$(this).attr('data-selected', '1');
+							}
+
+						} else {
+							// 記事、処方の両方が未選択の場合
+							$('#Last-Report-Header').css('background-color', '#31a9ee');
+							$('#Last-Report-Header').css('color', '#ffffff');
+							$('#Last-Report-Header').attr('data-selected', '1');
+
+							$('#Last-Drug-Header').css('background-color', '#31a9ee');
+							$('#Last-Drug-Header').css('color', '#ffffff');
+							$('#Last-Drug-Header').attr('data-selected', '1');
+						}
+					} else {
+						var sel = $(this).attr('data-selected');
+						if ($(this).attr('data-selected') == '1') {
+							$(this).css('background-color', '#f7f7f7');
+							$(this).css('color', '#000000');
+							$(this).attr('data-selected', '0');
+						} else {
+							$(this).css('background-color', '#31a9ee');
+							$(this).css('color', '#ffffff');
+							$(this).attr('data-selected', '1');
+						}
+					}
+				});
+
+				/*
+				 * モーダルダイアログ表示 
+				 */
+				$('.fa-expand').click(function () {
+					$('.modal-title').empty();
+					var txt = $(this).parent().children().find('.keshita').text();
+					$('.modal-title').append(txt);
+					$('.modal-body').empty();
+
+					var id = $(this).attr('id');
+					// 前回記事、処方の場合
+					if (id == 'Last-Report' || id == 'Last-Drug' || id == 'Last-Drug-Scro-Btn') {
+						var element = '<table><tbody>';
+						element += $('#report-src').html();
+						element += $('#drug-src').html();
+						element += '</tbody></table>';
+						$('.modal-body').append(element);
+					} else {
+						var cardBody = $(this).parent().parent().find('.card-body');
+						$('.modal-body').append($(cardBody).children().clone());
+					}
+
+					$('#myModal').modal('show');
+
+					return false;
+				});
+			});
+
+
+			// 前回診療録の開閉
+			function OpenCloseLastTimeClinicalReport() {
+				var direction = $('#BTN-EXPAND').attr('data-direction');
+				var hami = isProtrudeHeight($('.ZenkaiShinryo > card-body'));
+				if (direction == 'upper') {
+
+					$('.ZenkaiKensaKekka').show();
+					$('.TeikiKensa').show();
+					$('.ZenkaiGazo').show();
+					$('.TeikiShoho').show();
+
+					$('.ZenkaiShinryo').css('grid-row-end', 'span 6');
+
+					$('#BTN-EXPAND').attr('data-direction', 'under');
+					$('#BTN-EXPAND').text('▼');
+				} else {
+
+					$('.ZenkaiKensaKekka').hide();
+					$('.TeikiKensa').hide();
+					$('.ZenkaiGazo').hide();
+					$('.TeikiShoho').hide();
+
+					$('.ZenkaiShinryo').css('grid-row-end', 'span 13');
+
+					$('#BTN-EXPAND').attr('data-direction', 'upper');
+					$('#BTN-EXPAND').text('▲');
+				}
+
+			}
+
+
+			function isProtrudeHeight(obj) {
+				var orgScrollTop = $(obj).scrollTop();
+				$(obj).scrollTop(0);
+				$(obj).scrollTop(1);
+				var result = ($(obj).scrollTop() > 0);
+				$(obj).scrollTop(orgScrollTop);
+				return result;
+			}
+
+			function init() {
+				$('#report').append($('#report-src').html());
+				$('#drug').append($('#drug-src').html());
+			}
+
+		</script>
+
+		<script src="../../Scripts/vender/bootstrap/popper.min.js"></script>
+		<script src="../../Scripts/vender/bootstrap/bootstrap.min.js"></script>
+		<script src="../../Scripts/ripple.js"></script>
+
+	</body>
+
+</html>
