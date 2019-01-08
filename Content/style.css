@@ -50,6 +50,19 @@
 background-color: rgba(0,0,0,.075);
 }
 
+/* Data table icon */
+
+#copybtn {
+	width: 60px;
+	height: 30px;
+}
+
+.btn {
+	width: 40px;
+	height: 30px;
+	font-size: 10px;
+}
+
 /* Data card */
 .data-card {
 	border-radius: 4px;
@@ -75,7 +88,6 @@ background-color: rgba(0,0,0,.075);
 	border-bottom: 1px dashed #ccc;
 	text-decoration: none;
 }
-
 
 /* Buttons */
 /* material button */
@@ -136,7 +148,7 @@ background-color: rgba(0,0,0,.075);
   transform: scale(0);
   background: #FFF;
   animation: ripple 700ms;
-  pointer-events: none; 
+  pointer-events: none;
 }
 @-webkit-keyframes ripple {
   to {
@@ -298,4 +310,16 @@ background-color: rgba(0,0,0,.075);
 .p-dash__right .ZenkaiShinryoDrug .card {
 	height: 376px;
 	overflow-y: hidden;
+}
+
+
+
+/* design レシポンシブ */
+
+@media screen and (max-width: 960px){
+	.table-scroll{
+		overflow:auto;
+		white-space:nowrap;
+		-webkit-overflow-scrolling:touch;
+	}
 }

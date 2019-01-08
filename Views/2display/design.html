@@ -8,16 +8,21 @@
 		<title>デザインシステム　スカイカルテ！</title>
 		<script src="../../Scripts/vender/jquery/jquery-3.3.1.min.js"></script>
 		<script src="../../Scripts/vender/jquery/modernizr-2.8.3.js"></script>
+		<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
 
 		<link href="../../Content/common.css" rel="stylesheet" />
-
-		<link href="../../Content/style.css" rel="stylesheet" />
-		<link href="../../Content/DrugOrder.css" rel="stylesheet" />
 
 		<link href="../../Content/vender/bootstrap/bootstrap.min.css" rel="stylesheet" />
 		<link href="../../Content/vender/fontawesome/all.min.css" rel="stylesheet" />
 
+
+		<link href="../../Content/DrugOrder.css" rel="stylesheet" />
+		<link href="../../Content/style.css" rel="stylesheet" />
+
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+
+
 
 	</head>
 
@@ -59,10 +64,12 @@
 					</tbody>
 				</table>
 				<!-- table -->
+
+
 				<hr>
 				<h2>アイコン　状態</h2>
 				<!-- table -->
-				<table class="table table-bordered table-hover">
+				<table class="table table-bordered table-hover table-scroll">
 					<thead>
 						<tr>
 							<th class="text-muted text-center" scope="col">なし</th>
@@ -75,13 +82,42 @@
 					</thead>
 					<tbody>
 						<tr class="exam__item exam__item--done">
-							<td class="text-center"><i class="fas fa-minus"></i></td>
-							<td class="text-center text-danger font-weight-bold">未</td>
-							<td class="text-center"><i class="fas fa-check text-success"></i></td>
-							<td class="text-center"><i class="fas fa-spinner"></i></td>
-							<td class="text-center"><i class="fas fa-check-double text-success"></i></td>
-							<td class="text-center"><a href="#"><i class="far fa-image"></i></a></td>
+							<td class="text-center min-a"><i class="fas fa-minus h2"></i></td>
+							<td class="text-center min-a text-danger font-weight-bold h2">未</td>
+							<td class="text-center min-a"><i class="fas fa-check text-success h2"></i></td>
+							<td class="text-center min-a"><i class="fas fa-spinner h2"></i></td>
+							<td class="text-center min-a"><i class="fas fa-check-double text-success h2"></i></td>
+							<td class="text-center min-a"><a href="#"><i class="far fa-image h2"></i></a></td>
 						</tr>
+
+						<!-- コピーbtn -->
+						<tr class="exam__item exam__item--done">
+							<td class="text-center">
+					    	<input class="text-center" id="copybtn" value="<i class=&quot;fas fa-minus&quot;></i>">
+						    <button class="btn" data-clipboard-target="#copybtn">copy</button>
+							</td>
+							<td class="text-center text-danger font-weight-bold">
+								<input class="text-center" id="copybtn" value="<i class=&quot;text-center text-danger font-weight-bold&quot;>未</i>">
+					    	<button class="btn" data-clipboard-target="#copybtn">copy</button>
+							</td>
+							<td class="text-center">
+								<input id="copybtn" value="<i class=&quot;fas fa-check text-success&quot;></i>">
+								<button class="btn" data-clipboard-target="#copybtn">copy</button>
+							</td>
+							<td class="text-center">
+					    	<input class="text-center" id="copybtn" value="<i class=&quot;fas fa-spinner&quot;></i>">
+						    <button class="btn" data-clipboard-target="#copybtn">copy</button>
+							</td>
+							<td class="text-center">
+					    	<input class="text-center" id="copybtn" value="<i class=&quot;fas fa-check-double text-success&quot;></i>">
+						    <button class="btn" data-clipboard-target="#copybtn">copy</button>
+							</td>
+							<td class="text-center">
+					    	<input class="text-center" id="copybtn" value="<a href=&quot;#&quot;><i class=&quot;far fa-image&quot;></i>">
+						    <button class="btn" data-clipboard-target="#copybtn">copy</button>
+							</td>
+						</tr>
+						<!-- //コピーbtn -->
 					</tbody>
 				</table>
 				<!-- table -->
@@ -89,7 +125,7 @@
 				<h2>アイコン　編集</h2>
 				<!-- table -->
 				<table class="table table-bordered table-hover">
-					<thead>
+					<thead class="table-scroll">
 						<tr>
 							<th class="text-muted text-center" scope="col">コメント</th>
 							<th class="text-muted text-center" scope="col">カレンダー</th>
@@ -138,7 +174,7 @@
 				<hr>
 				<h2>アイコン　行為</h2>
 				<!-- table -->
-				<table class="table table-bordered table-hover">
+				<table class="table table-bordered table-hover table-scroll">
 					<thead>
 						<tr>
 							<th class="text-muted text-center" scope="col">処方</th>
@@ -166,7 +202,7 @@
 
 				<h2>アイコン　その他</h2>
 				<!-- table -->
-				<table class="table table-bordered table-hover">
+				<table class="table table-bordered table-hover table-scroll">
 					<thead>
 						<tr>
 							<th class="text-muted text-center" scope="col">診療所</th>
@@ -192,7 +228,7 @@
 
 				<h2>ボタン</h2>
 								<!-- table -->
-								<table class="table table-bordered table-hover">
+								<table class="table table-bordered table-hover table-scroll">
 										<thead>
 											<tr>
 												<th class="text-muted text-center" scope="col">Floating Action Button</th>
@@ -234,7 +270,6 @@
 				</nav>
 
 
-
 			</div>
 			<!-- /content -->
 
@@ -251,6 +286,16 @@
 		<script src="../../Scripts/vender/bootstrap/bootstrap.min.js"></script>
 
 		<script src="../../Scripts/ripple.js"></script>
+
+
+<!-- btn -->
+		<script>
+				var clipboard = new Clipboard('.btn').Val();
+					clipboard.on('success', function(e) {
+						e.clearSelection();
+				});
+		</script>
+<!-- // btn -->
 
 	</body>
 
