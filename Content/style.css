@@ -52,9 +52,8 @@ background-color: rgba(0,0,0,.075);
 
 /* Data table icon */
 
-#copybtn {
-	width: 60px;
-	height: 30px;
+.copybtn {
+	float: left;
 }
 
 .btn {
@@ -105,6 +104,17 @@ background-color: rgba(0,0,0,.075);
 }
 .M-btn:hover {
 	background: #49599a;
+}
+
+/* copybtn */
+button.M-btn {
+	background: #002984 ;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	transition: 0.3s;
+	padding: 2px 12px;
 }
 
 /* outline button */
