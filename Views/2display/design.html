@@ -6,24 +6,18 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>デザインシステム　スカイカルテ！</title>
-		<script src="../../Scripts/vender/jquery/jquery-3.3.1.min.js"></script>
-		<script src="../../Scripts/vender/jquery/modernizr-2.8.3.js"></script>
-		<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+		 crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+		 crossorigin="anonymous">
 
 		<link href="../../Content/common.css" rel="stylesheet" />
-
-		<link href="../../Content/vender/bootstrap/bootstrap.min.css" rel="stylesheet" />
-		<link href="../../Content/vender/fontawesome/all.min.css" rel="stylesheet" />
-
-
 		<link href="../../Content/DrugOrder.css" rel="stylesheet" />
 		<link href="../../Content/style.css" rel="stylesheet" />
 
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
-
-
-
-
+		<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
 	</head>
 
 	<body>
@@ -31,7 +25,7 @@
 		<!-- header -->
 		<header class="header sticky-top">
 			<div class="primary-bar d-flex justify-content-between">
-				<h1 class="h3 d-inline-block text-white">
+				<h1 class="h3 d-inline-block">
 					<span class="font-weight-bold mr-1">Sky</span>Karte
 				</h1>
 			</div>
@@ -71,28 +65,28 @@
 						<!-- icon state-copybtn -->
 						<tr class="exam__item exam__item--done">
 							<td class="text-center copybtn">
-					    	<input class="text-center state-copybtn1" value="<i class=&quot;fas fa-minus&quot;></i>">
-						    <button class="btn" data-clipboard-target=".state-copybtn1">copy</button>
+								<input class="text-center state-copybtn1" value="<i class=&quot;fas fa-minus&quot;></i>">
+								<button class="btn" data-clipboard-target=".state-copybtn1">copy</button>
 							</td>
 							<td class="text-center text-danger font-weight-bold">
 								<input class="text-center state-copybtn2" value="<i class=&quot;text-center text-danger font-weight-bold&quot;>未</i>">
-					    	<button class="btn" data-clipboard-target=".state-copybtn2">copy</button>
+								<button class="btn" data-clipboard-target=".state-copybtn2">copy</button>
 							</td>
 							<td class="text-center">
 								<input class="text-center state-copybtn3" value="<i class=&quot;fas fa-check text-success&quot;></i>">
 								<button class="btn" data-clipboard-target=".state-copybtn3">copy</button>
 							</td>
 							<td class="text-center">
-					    	<input class="text-center state-copybtn4" value="<i class=&quot;fas fa-spinner&quot;></i>">
-						    <button class="btn" data-clipboard-target=".state-copybtn4">copy</button>
+								<input class="text-center state-copybtn4" value="<i class=&quot;fas fa-spinner&quot;></i>">
+								<button class="btn" data-clipboard-target=".state-copybtn4">copy</button>
 							</td>
 							<td class="text-center">
-					    	<input class="text-center state-copybtn5" value="<i class=&quot;fas fa-check-double text-success&quot;></i>">
-						    <button class="btn" data-clipboard-target=".state-copybtn5">copy</button>
+								<input class="text-center state-copybtn5" value="<i class=&quot;fas fa-check-double text-success&quot;></i>">
+								<button class="btn" data-clipboard-target=".state-copybtn5">copy</button>
 							</td>
 							<td class="text-center">
-					    	<input class="text-center state-copybtn6" value="<a href=&quot;#&quot;><i class=&quot;far fa-image&quot;></i>">
-						    <button class="btn" data-clipboard-target=".state-copybtn6">copy</button>
+								<input class="text-center state-copybtn6" value="<a href=&quot;#&quot;><i class=&quot;far fa-image&quot;></i>">
+								<button class="btn" data-clipboard-target=".state-copybtn6">copy</button>
 							</td>
 						</tr>
 						<!-- //icon state-copybtn -->
@@ -149,8 +143,8 @@
 						<!-- editing-cpybtn -->
 						<tr class="exam__item exam__item--done">
 							<td class="text-center copybtn">
-					    	<input class="text-center editing-copybtn1" value="<i class=&quot;far fa-comment-dots&quot;></i>">
-						    <button class="btn" data-clipboard-target=".editing-copybtn1">copy</button>
+								<input class="text-center editing-copybtn1" value="<i class=&quot;far fa-comment-dots&quot;></i>">
+								<button class="btn" data-clipboard-target=".editing-copybtn1">copy</button>
 							</td>
 							<td class="text-center">
 								<input class="text-center editing-copybtn2" value="<i class=&quot;fas fa-calendar-alt&quot;></i>">
@@ -253,8 +247,8 @@
 						<!-- action-cpybtn -->
 						<tr class="exam__item exam__item--done">
 							<td class="text-center copybtn">
-					    	<input class="text-center action-copybtn1" value="<i class=&quot;fa fa-pills&quot;></i>">
-						    <button class="btn" data-clipboard-target=".action-copybtn1">copy</button>
+								<input class="text-center action-copybtn1" value="<i class=&quot;fa fa-pills&quot;></i>">
+								<button class="btn" data-clipboard-target=".action-copybtn1">copy</button>
 							</td>
 							<td class="text-center">
 								<input class="text-center action-copybtn2" value="<i class=&quot;fa fa-syringe&quot;></i>">
@@ -308,26 +302,26 @@
 						</tr>
 						<!-- otherwise-copybtn -->
 						<tr class="exam__item exam__item--done">
-						<td class="text-center copybtn">
-							<input class="text-center otherwise-copybtn1" value="<i class=&quot;fas fa-hospital-alt&quot;></i>">
-							<button class="btn" data-clipboard-target=".otherwise-copybtn1">copy</button>
-						</td>
-						<td class="text-center">
-							<input class="text-center otherwise-copybtn2" value="<i class=&quot;fas fa-user&quot;></i>">
-							<button class="btn" data-clipboard-target=".otherwise-copybtn2">copy</button>
-						</td>
-						<td class="text-center">
-							<input class="text-center otherwise-copybtn2" value="<i class=&quot;fas fa-cog&quot;></i>">
-							<button class="btn" data-clipboard-target=".otherwise-copybtn2">copy</button>
-						</td>
-						<td class="text-center">
-							<input class="text-center otherwise-copybtn2" value="<i class=&quot;fas fa-sign-out-alt&quot;></i>">
-							<button class="btn" data-clipboard-target=".otherwise-copybtn2">copy</button>
-						</td>
-						<td class="text-center">
-							<input class="text-center otherwise-copybtn2" value="<i class=&quot;fas fa-exclamation-triangle&quot;></i>">
-							<button class="btn M-btn ripple" data-clipboard-target=".otherwise-copybtn2">copy</button>
-						</td>
+							<td class="text-center copybtn">
+								<input class="text-center otherwise-copybtn1" value="<i class=&quot;fas fa-hospital-alt&quot;></i>">
+								<button class="btn" data-clipboard-target=".otherwise-copybtn1">copy</button>
+							</td>
+							<td class="text-center">
+								<input class="text-center otherwise-copybtn2" value="<i class=&quot;fas fa-user&quot;></i>">
+								<button class="btn" data-clipboard-target=".otherwise-copybtn2">copy</button>
+							</td>
+							<td class="text-center">
+								<input class="text-center otherwise-copybtn2" value="<i class=&quot;fas fa-cog&quot;></i>">
+								<button class="btn" data-clipboard-target=".otherwise-copybtn2">copy</button>
+							</td>
+							<td class="text-center">
+								<input class="text-center otherwise-copybtn2" value="<i class=&quot;fas fa-sign-out-alt&quot;></i>">
+								<button class="btn" data-clipboard-target=".otherwise-copybtn2">copy</button>
+							</td>
+							<td class="text-center">
+								<input class="text-center otherwise-copybtn2" value="<i class=&quot;fas fa-exclamation-triangle&quot;></i>">
+								<button class="btn M-btn ripple" data-clipboard-target=".otherwise-copybtn2">copy</button>
+							</td>
 						</tr>
 						<!-- //Otherwise-copybtn -->
 					</tbody>
@@ -337,40 +331,40 @@
 				<hr>
 
 				<h2>ボタン</h2>
-								<!-- table -->
-								<table class="table table-bordered table-hover table-scroll">
-										<thead>
-											<tr>
-												<th class="text-muted text-center" scope="col">Floating Action Button</th>
-												<th class="text-muted text-center" scope="col">プライマリー</th>
-												<th class="text-muted text-center" scope="col">セカンダリー</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr class="exam__item exam__item--done">
-												<td class="text-center"><span class="fab-btn ripple" style="position: relative;"><a href="#" class="align-middle">FAB</a></span></td>
-												<td class="text-center"><span class="M-btn ripple"><a href="#" class="align-middle">プライマリー</a></span></td>
-												<td class="text-center"><span class="M-btn-OL ripple"><a href="#" class="align-middle">アウトライン</a></span></td>
-											</tr>
-											<!-- button-copybtn -->
-											<tr class="exam__item exam__item--done">
-											<td class="text-center copybtn">
-												<input class="text-center button-copybtn1" value="<span class=&quot;fab-btn ripple&quot; style=&quot;position: relative;&quot;><a href=&quot;#&quot; class=&quot;align-middle&quot;>FAB</a></span>">
-												<button class="btn" data-clipboard-target=".button-copybtn1">copy</button>
-											</td>
-											<td class="text-center">
-												<input class="text-center button-copybtn2" value="<span class=&quot;M-btn ripple&quot;><a href=&quot;#&quot; class=&quot;align-middle&quot;>プライマリー</a></span>">
-												<button class="btn" data-clipboard-target=".otherwise-copybtn2">copy</button>
-											</td>
-											<td class="text-center">
-												<input class="text-center button-copybtn3" value="<span class=&quot;M-btn-OL ripple&quot;><a href=&quot;#&quot; class=&quot;align-middle&quot;>アウトライン</a></span>">
-												<button class="text-center M-btn ripple" data-clipboard-target=".button-copybtn3">copy</button>
-											</td>
-										</td>
-										</tr>
-										</tbody>
-									</table>
-									<!-- table -->
+				<!-- table -->
+				<table class="table table-bordered table-hover table-scroll">
+					<thead>
+						<tr>
+							<th class="text-muted text-center" scope="col">Floating Action Button</th>
+							<th class="text-muted text-center" scope="col">プライマリー</th>
+							<th class="text-muted text-center" scope="col">セカンダリー</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="exam__item exam__item--done">
+							<td class="text-center"><span class="fab-btn ripple" style="position: relative;"><a href="#" class="align-middle">FAB</a></span></td>
+							<td class="text-center"><span class="M-btn ripple"><a href="#" class="align-middle">プライマリー</a></span></td>
+							<td class="text-center"><span class="M-btn-OL ripple"><a href="#" class="align-middle">アウトライン</a></span></td>
+						</tr>
+						<!-- button-copybtn -->
+						<tr class="exam__item exam__item--done">
+							<td class="text-center copybtn">
+								<input class="text-center button-copybtn1" value="<span class=&quot;fab-btn ripple&quot; style=&quot;position: relative;&quot;><a href=&quot;#&quot; class=&quot;align-middle&quot;>FAB</a></span>">
+								<button class="btn" data-clipboard-target=".button-copybtn1">copy</button>
+							</td>
+							<td class="text-center">
+								<input class="text-center button-copybtn2" value="<span class=&quot;M-btn ripple&quot;><a href=&quot;#&quot; class=&quot;align-middle&quot;>プライマリー</a></span>">
+								<button class="btn" data-clipboard-target=".otherwise-copybtn2">copy</button>
+							</td>
+							<td class="text-center">
+								<input class="text-center button-copybtn3" value="<span class=&quot;M-btn-OL ripple&quot;><a href=&quot;#&quot; class=&quot;align-middle&quot;>アウトライン</a></span>">
+								<button class="text-center M-btn ripple" data-clipboard-target=".button-copybtn3">copy</button>
+							</td>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- table -->
 
 
 				<nav aria-label="Page navigation example">
@@ -406,37 +400,37 @@
 		</footer>
 		<!-- /footer -->
 
-		<script src="../../Scripts/vender/bootstrap/popper.min.js"></script>
-		<script src="../../Scripts/vender/bootstrap/bootstrap.min.js"></script>
-
-		<script src="../../Scripts/ripple.js"></script>
 
 
-<!-- btn -->
+		<!-- btn -->
 		<script>
+			$(function () {
 
-
-			$(function(){
-
-				$(function(){
-					$('td .btn').click(function() {
-						var num = $('td .btn').index(this);　//クリックした番号を格納:
+				$(function () {
+					$('td .btn').click(function () {
+						var num = $('td .btn').index(this); //クリックした番号を格納:
 						/*	$('td .btn').eq(num).addClass('one');		//クラス追加 */
 
-								var clipboard = new Clipboard('.btn');
-								clipboard.on('success', function(e) {
-									e.clearSelection();
-								});
-				});
+						var clipboard = new Clipboard('.btn');
+						clipboard.on('success', function (e) {
+							e.clearSelection();
+						});
+					});
 				});
 			});
 
-
-
-
 		</script>
-<!-- // btn -->
+		<!-- // btn -->
 
 	</body>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+	 crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+	 crossorigin="anonymous"></script>
+
+	<script src="../../Scripts/ripple.js"></script>
 
 </html>
