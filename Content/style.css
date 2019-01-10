@@ -50,16 +50,25 @@
 background-color: rgba(0,0,0,.075);
 }
 
-/* Data table icon */
-
-.copybtn {
-	float: left;
+/* design table */
+.table .td-bottom {
+	border-bottom-color: #999;
+	white-space: nowrap;
 }
 
-.btn {
-	width: 40px;
-	height: 30px;
-	font-size: 10px;
+/*.table td {
+	border-left-color: #999;
+	border-right-color: #999;
+} */
+
+.table th {
+	border-top-color: #999;
+/*	border-left-color: #999;
+	border-right-color: #999;*/
+}
+
+table .td-bottom:hover {
+background-color: #aab2d5; /* マウスオーバー時のセルの背景色 */
 }
 
 /* Data card */
@@ -108,14 +117,16 @@ background-color: rgba(0,0,0,.075);
 
 /* copybtn */
 button.M-btn {
-	background: #002984 ;
+	width: 3em;
+	background: #95a0ba;
 	border-radius: 5px;
 	color: #fff;
 	cursor: pointer;
 	display: inline-block;
 	transition: 0.3s;
-	padding: 2px 12px;
+	padding: 0;
 }
+
 
 /* outline button */
 .M-btn-OL {
@@ -223,6 +234,7 @@ button.M-btn {
 
 /* FAB button */
 .fab-btn {
+	margin-left: 50%;
 	position: fixed;
 	bottom: 16%;
 	right: 40px;
@@ -246,6 +258,28 @@ button.M-btn {
 	  background: #49599a;
 	  box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
   }
+
+	/* テーブル横スクロール */
+	.table-scroll {
+		width: 100%;
+		height: 100%;
+		overflow-y:scroll;
+	}
+
+	/* パーツグループ */
+	h2 {
+		text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+	}
+
+	/* design レシポンシブ */
+	@media screen and (max-width: 960px){
+		.table{
+			width: 400px;
+			overflow-y:scroll;
+			white-space:nowrap;
+		}
+	}
+
 
 
 .rireki {
@@ -320,16 +354,4 @@ button.M-btn {
 .p-dash__right .ZenkaiShinryoDrug .card {
 	height: 376px;
 	overflow-y: hidden;
-}
-
-
-
-/* design レシポンシブ */
-
-@media screen and (max-width: 960px){
-	.table-scroll{
-		overflow:auto;
-		white-space:nowrap;
-		-webkit-overflow-scrolling:touch;
-	}
 }
