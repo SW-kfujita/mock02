@@ -365,11 +365,10 @@ button.M-btn {
 ==========================================================================*/
 
 
-/* 共通 */
-input[type=radio], input[type=checkbox] {
+.radio, .check {
     display: none;
 }
-input[type=radio] + label, input[type=checkbox] + label {
+.radio + .radio1, .check + .check1 {
     position: relative;
     padding-left: 30px;
 		cursor: pointer;
@@ -379,7 +378,7 @@ input[type=radio] + label, input[type=checkbox] + label {
 }
 
 /* チェックボックス */
-input[type=checkbox] + label::before {
+.check + .check1::before {
     content: "";
     display: block;
     box-sizing: border-box;
@@ -392,10 +391,10 @@ input[type=checkbox] + label::before {
     border-radius: 2px;
     transition: .2s;
 }
-input[type=checkbox]:checked + label::before {
+.check:checked + .check1::before {
     border: 10px solid #009688;
 }
-input[type=checkbox] + label::after {
+.check + .check1::after {
     content: "";
     display: block;
     box-sizing: border-box;
@@ -410,7 +409,7 @@ input[type=checkbox] + label::after {
 		border-left: 2px solid #FFF;
 		border-bottom: 2px solid #FFF;
 }
-input[type=checkbox]:checked + label::after {
+.check:checked + .check1::after {
     animation: check .175s ease .2s 1 normal forwards;
 }
 @keyframes check {
@@ -431,8 +430,9 @@ input[type=checkbox]:checked + label::after {
 }
 
 
+
 /* ラジオボタン */
-input[type=radio] + label::before {
+.radio + .radio1::before {
     content: "";
     display: block;
     box-sizing: border-box;
@@ -445,10 +445,10 @@ input[type=radio] + label::before {
     border-radius: 50%;
     transition: .2s;
 }
-input[type=radio]:checked + label::before {
+.radio:checked + .radio1::before {
     border: 2px solid #009688;
 }
-input[type=radio] + label::after {
+.radio + .radio1::after {
     content: "";
     display: block;
     box-sizing: border-box;
@@ -462,6 +462,6 @@ input[type=radio] + label::after {
     transform: scale(0);
     transition: .175s;
 }
-input[type=radio]:checked + label::after {
+.radio:checked + .radio1::after {
     transform: scale(1);
 }
