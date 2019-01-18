@@ -364,7 +364,6 @@ button.M-btn {
 //
 ==========================================================================*/
 
-
 .radio, .check {
     display: none;
 }
@@ -373,11 +372,15 @@ button.M-btn {
     padding-left: 30px;
 		cursor: pointer;
 		transform: scale(1.5);
-		margin-left: 40%;
 		padding-top: 1px;
 }
 
 /* チェックボックス */
+
+.form_td {
+	text-align: center;
+}
+
 .check + .check1::before {
     content: "";
     display: block;
@@ -390,6 +393,7 @@ button.M-btn {
     border: 2px solid #9E9E9E;
     border-radius: 2px;
     transition: .2s;
+		margin: auto;
 }
 .check:checked + .check1::before {
     border: 10px solid #009688;
@@ -444,7 +448,7 @@ button.M-btn {
     border: 2px solid #9E9E9E;
     border-radius: 50%;
     transition: .2s;
-}
+	}
 .radio:checked + .radio1::before {
     border: 2px solid #009688;
 }
