@@ -5,10 +5,9 @@
 ==========================================================================*/
 
 /* Primary bar */
-.primary-bar {
-	/*background:#90caf9; */
+.sk-primary-bar {
 	background: #fff;
-	color: #90caf9;
+	color: var(--color-bg-sky);
 	height: 40px;
 	line-height: 40px;
 	padding: 0px 16px;
@@ -17,7 +16,8 @@
 /* Secondary bar */
 .secondary-bar {
 	background:#fff;
-	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+	border-top: 1px solid #e0e0e0;
+	box-shadow: var(--box-shadow);
 	height: 60px;
 	line-height: 24px;
 }
@@ -26,7 +26,6 @@
 .data-table {
 	background: #fff;
 	border-bottom: 1px solid #e0e0e0;
-	line-height: 2;
 	width: 100%;
 }
 .data-table tr {
@@ -47,55 +46,10 @@
 	border-right: 0;
 }
 .data-table tr:hover {
-background-color: rgba(0,0,0,.075);
+	background-color: rgba(0,0,0,.075) !important;
 }
 
-/* design table */
-.table .td-bottom {
-	border-bottom-color: #999;
-	white-space: nowrap;
-}
 
-/*.table td {
-	border-left-color: #999;
-	border-right-color: #999;
-} */
-
-.table th {
-	border-top-color: #999;
-/*	border-left-color: #999;
-	border-right-color: #999;*/
-}
-
-table .td-bottom:hover {
-background-color: #aab2d5; /* マウスオーバー時のセルの背景色 */
-}
-
-/* Data card */
-.data-card {
-	border-radius: 4px;
-	padding: 1rem;
-	margin-right: 2%;
-  transition: 0.3s;
-	width: 100%;
-}
-.data-card__header {
-	border-left: 4px solid #ddd;
-	padding-left: 0.5rem;
-	margin-bottom: 0.5rem;
-}
-.data-card__comment {
-	font-size: 90%;
-	height: 80px;
-	overflow-y: auto;
-}
-.data-card:hover {
-	box-shadow:0px 0px 10px 1px #ccc;
-}
-.data-card ul li a {
-	border-bottom: 1px dashed #ccc;
-	text-decoration: none;
-}
 
 /* Buttons */
 /* material button */
@@ -114,19 +68,6 @@ background-color: #aab2d5; /* マウスオーバー時のセルの背景色 */
 .M-btn:hover {
 	background: #49599a;
 }
-
-/* copybtn */
-button.M-btn {
-	width: 3em;
-	background: #95a0ba;
-	border-radius: 5px;
-	color: #fff;
-	cursor: pointer;
-	display: inline-block;
-	transition: 0.3s;
-	padding: 0;
-}
-
 
 /* outline button */
 .M-btn-OL {
@@ -169,7 +110,7 @@ button.M-btn {
   transform: scale(0);
   background: #FFF;
   animation: ripple 700ms;
-  pointer-events: none;
+  pointer-events: none; 
 }
 @-webkit-keyframes ripple {
   to {
@@ -234,7 +175,6 @@ button.M-btn {
 
 /* FAB button */
 .fab-btn {
-	margin-left: 50%;
 	position: fixed;
 	bottom: 16%;
 	right: 40px;
@@ -258,28 +198,6 @@ button.M-btn {
 	  background: #49599a;
 	  box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
   }
-
-	/* テーブル横スクロール */
-	.table-scroll {
-		width: 100%;
-		height: 100%;
-		overflow-y:scroll;
-	}
-
-	/* パーツグループ */
-	h2 {
-		text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-	}
-
-	/* design レシポンシブ */
-	@media screen and (max-width: 960px){
-		.table{
-			width: 400px;
-			overflow-y:scroll;
-			white-space:nowrap;
-		}
-	}
-
 
 
 .rireki {
@@ -318,6 +236,38 @@ button.M-btn {
 //
 ==========================================================================*/
 
+/* クリニカルダッシュボード */
+.iframe-div1 {
+	width: 670px;
+	height: 300px;
+	overflow-x: hidden;
+	z-index: 2;
+}
+
+.iframe-div2 {
+	width: 670px;
+	height: 300px;
+	overflow: hidden;
+	border: solid 4px;
+	z-index: 1;
+	position: relative;
+}
+
+.ifrm1 {
+	transform: scale(0.55);
+	-o-transform: scale(0.55);
+	-webkit-transform: scale(0.55);
+	-moz-transform: scale(0.55);
+	-ms-transform: scale(0.55);
+	transform-origin: 0 0;
+	-o-transform-origin: 0 0;
+	-webkit-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	z-index: 0;
+}
+
+
 /* ペイシェントダッシュボード */
 
 .p-dash {
@@ -354,118 +304,4 @@ button.M-btn {
 .p-dash__right .ZenkaiShinryoDrug .card {
 	height: 376px;
 	overflow-y: hidden;
-}
-
-
-
-/*=========================================================================
-//
-// radiobtn,checkbox
-//
-==========================================================================*/
-
-.radio, .check {
-    display: none;
-}
-.radio + .radio1, .check + .check1 {
-    position: relative;
-    padding-left: 30px;
-		cursor: pointer;
-		transform: scale(1.5);
-		padding-top: 1px;
-}
-
-/* チェックボックス */
-
-.form_td {
-	text-align: center;
-}
-
-.check + .check1::before {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute;
-    top: 4px;
-    left: 2px;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #9E9E9E;
-    border-radius: 2px;
-    transition: .2s;
-		margin: auto;
-}
-.check:checked + .check1::before {
-    border: 10px solid #009688;
-}
-.check + .check1::after {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute;
-    top: 10px;
-    left: 3px;
-    width: 0;
-    height: 0;
-    transform: rotate(-45deg);
-    transform-origin: left top;
-    visibility: hidden;
-		border-left: 2px solid #FFF;
-		border-bottom: 2px solid #FFF;
-}
-.check:checked + .check1::after {
-    animation: check .175s ease .2s 1 normal forwards;
-}
-@keyframes check {
-    0% {
-        visibility: visible;
-        width: 0;
-        height: 0;
-    }
-    40% {
-        width: 0;
-        height: 8px;
-    }
-    100% {
-        visibility: visible;
-        width: 12px;
-        height: 12px;
-    }
-}
-
-
-
-/* ラジオボタン */
-.radio + .radio1::before {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute;
-    top: 4px;
-    left: 2px;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #9E9E9E;
-    border-radius: 50%;
-    transition: .2s;
-	}
-.radio:checked + .radio1::before {
-    border: 2px solid #009688;
-}
-.radio + .radio1::after {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute;
-    top: 7px;
-    left: 5px;
-    width: 10px;
-    height: 10px;
-    background-color: #009688;
-    border-radius: 50%;
-    transform: scale(0);
-    transition: .175s;
-}
-.radio:checked + .radio1::after {
-    transform: scale(1);
 }
