@@ -1,0 +1,347 @@
+
+
+<head>
+  <link href="../../Content/vender/bootstrap.min.css" rel="stylesheet" />
+  <script src="../../Scripts/vender/jquery-3.3.1.min.js"></script>
+
+</head>
+<!-- content -->
+
+
+<!-- List Header -->
+<div class="pat-list__header shadow-sm w-100 bg-white mb-5">
+    <!-- controll area -->
+
+    <!-- /controll area -->
+
+    <!-- List Title -->
+    <div class="pat-list__header-title d-flex border-top border-bottom">
+        <div class="pat-list--xs text-center py-2 font-weight-bold border-right">NO</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">状態</div>
+        <div class="pat-list--l text-center py-2 font-weight-bold border-right">受付</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">待ち</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">患コ</div>
+        <div class="pat-list--xl text-center py-2 font-weight-bold border-right">ID</div>
+        <div class="pat-list--free text-center py-2 font-weight-bold border-right">氏名<span class="badge badge-secondary ml-2 py-1 kana-btn">カナ変換</span></div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">年齢</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">事検</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">処方</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">注射</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">処置</div>
+        <div class="pat-list--m text-center py-2 font-weight-bold border-right">検体</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">生理</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">画像</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">リハ</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">会計</div>
+        <div class="pat-list--s text-center py-2 font-weight-bold border-right">文書</div>
+        <div class="pat-list--m text-center py-2 font-weight-bold border-right">科</div>
+        <div class="pat-list--m text-center py-2 font-weight-bold border-right">医師</div>
+        <div class="pat-list--m text-center py-2 font-weight-bold">診察室</div>
+    </div>
+    <!-- List Title -->
+</div>
+
+<!-- table -->
+<div class="pat-list__table">
+    <table class="data-table mb-3 w-100 bg-white border-bottom">
+        <tbody>
+            <tr class="exam__item exam__item--done border-top">
+                <td class="pat-list--xs text-center py-2" scope="row">1</td>
+                <td class="pat-list--s text-center">済</td>
+                <td class="pat-list--l text-center">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle modal-comment px-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">09:00</a>
+                    </div>
+                </td>
+                <td class="pat-list--s text-center">10分</td>
+                <td class="pat-list--s text-center"><a href="#" class="modal-comment"></a></td>
+                <td class="pat-list--xl text-center small"><a href="/PatientSelect/PatientProfileMain" title="患者プロファイル">0123456789<i class="far fa-address-card ml-2"></i></a></td>
+                <td class="pat-list--free text-left px-2 henkan" title="堀ノ口 小太郎"><a href="#ho" title="ホリノグチ　コタロウ" class="male kana0">堀ノ口 小太郎</a></td>
+                <td class="pat-list--s text-center">39<span class="small">歳</span></td>
+                <td class="pat-list--s text-center"><a href="#"><i class="fas fa-expand"></i></a></td>
+                <td class="pat-list--s text-center"><i class="fas fa-check-double text-success"></i></td>
+                <td class="pat-list--s text-center"></td>
+                <td class="pat-list--s text-center"></td>
+                <td class="pat-list--m text-center">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            仮
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="/InspectionResult/SpecimenResult">参照</a>
+                            <a class="dropdown-item" href="/InspectionResult/Daily">時系列</a>
+                            <a class="dropdown-item" href="/InspectionResult/Graph">グラフ</a>
+                        </div>
+                    </div>
+
+                    <style media="screen">
+                      .henkan .active {
+                        display: block;
+                       }
+
+                    </style>
+
+                </td>
+                <td class="pat-list--s text-center">
+                    <div class="dropdown">
+                        <button class="btn dropdown fas fa-check text-success" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <button type="button" class="btn btn-link"><a href="/SummaryKarte/rireki">実施内容確認（サマリーカルテ）</a></button>
+                            <div class="dropdown-divider"></div>
+                            <div class="custom-control custom-checkbox excute-action">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">実施サイン</label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="pat-list--s text-center"><a href="#"><i class="far fa-image"></i></a></td>
+                <td class="pat-list--s text-center"></td>
+                <td class="pat-list--s text-center"><i class="fas fa-check-double text-success"></i></td>
+                <td class="pat-list--s text-center"><i class="fas fa-check text-success"></i></td>
+                <td class="pat-list--m text-center small">内科</td>
+                <td class="pat-list--m text-center small">大山田</td>
+                <td class="pat-list--m text-center small">診察室1</td>
+            </tr>
+            <tr class="exam__item exam__item--done">
+                <td class="text-center py-2" scope="row">2</td>
+                <td class="text-center">済</td>
+                <td class="text-center">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle modal-comment px-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">09:10</a>
+                    </div>
+                </td>
+                <td class="text-center"></td>
+                <td class="text-center"><a href="#" class="modal-comment"></a></td>
+                <td class="text-center small"><a href="/PatientSelect/PatientProfileMain" title="患者プロファイル">9999999999<i class="far fa-address-card ml-2"></i></a></td>
+                <td class="text-left px-2" title="森谷 咲良"><a href="#ho" title="モリヤ　サラ" class="female kana1">森谷 咲良</a></td>
+                <td class="text-center">22<span class="small">歳</span></td>
+                <td class="text-center"></td>
+                <td class="text-center"><i class="fas fa-check-double text-success"></i></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"><i class="fas fa-check-double text-success"></i></td>
+                <td class="text-center"></td>
+                <td class="text-center small">外科</td>
+                <td class="text-center small">四方が原</td>
+                <td class="text-center small">診察室2</td>
+            </tr>
+            <tr class="exam__item exam__item--done">
+                <td class="text-center py-2" scope="row">3</td>
+                <td class="text-center">済</td>
+                <td class="text-center">09:11</td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center small">0123456789</td>
+                <td class="text-left px-2" title="細谷 雅人"><a href="#ho" title="ホソヤ　マサト" class="kana2">細谷 雅人</a></td>
+                <td class="text-center">100<span class="small">歳</span></td>
+                <td class="text-center"></td>
+                <td class="text-center"><i class="fas fa-check-double text-success"></i></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"><i class="fas fa-check-double text-success"></i></td>
+                <td class="text-center"></td>
+                <td class="text-center small">小児科</td>
+                <td class="text-center small">大山田</td>
+                <td class="text-center small">診察室3</td>
+            </tr>
+            <tr class="exam__item exam__item--done">
+                <td class="text-center py-2" scope="row">4</td>
+                <td class="text-center">済</td>
+                <td class="text-center">09:15</td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center small">0123456789</td>
+                <td class="text-left px-2"><a href="#ho" title="クロザキ　トシロウ" class="kana3">黒崎 利郎</a></td>
+                <td class="text-center">58<span class="small">歳</span></td>
+                <td class="text-center"></td>
+                <td class="text-center"><i class="fas fa-check-double text-success"></i></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"><i class="fas fa-check-double text-success"></i></td>
+                <td class="text-center"></td>
+                <td class="text-center small">整形外科</td>
+                <td class="text-center small">大山田</td>
+                <td class="text-center small">診察室4</td>
+            </tr>
+            <tr class="exam__item exam__item--done">
+                <td class="text-center py-2" scope="row">5</td>
+                <td class="text-center">済</td>
+                <td class="text-center">09:20</td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center small">0123456789</td>
+                <td class="text-left px-2"><a href="#ho" title="オオシロ　イチカ" class="kana4">大城 一華</a></td>
+                <td class="text-center">27<span class="small">歳</span></td>
+                <td class="text-center"></td>
+                <td class="text-center"><i class="fas fa-check-double text-success"></i></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"><i class="fas fa-check-double text-success"></i></td>
+                <td class="text-center"></td>
+                <td class="text-center small">リハビリ</td>
+                <td class="text-center small">大山田</td>
+                <td class="text-center small">診察室5</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<!-- /table -->
+<!-- /content -->
+    <script>
+        $(function () {
+
+            /*
+             * 初期処理
+             */
+            init();
+
+            /*
+             * モーダルダイアログ表示
+             */
+            //事前検査
+            $('.fa-expand').click(function () {
+
+                $('#myModal').modal('show');
+
+                return false;
+            });
+
+            //コメント入力
+            $('.modal-comment').click(function () {
+
+                $('#myCommentInputModal').modal('show');
+
+                return false;
+            });
+
+            //実施
+            $('.excute-action').click(function () {
+                var target = $(this).parent().parent().children('#dropdownMenuButton');
+                if ($(this).children("#customCheck1").prop('checked')) {
+                    target.addClass('fa-check-double');
+                }
+                else {
+                    target.removeClass('fa-check-double');
+                    target.text('');
+                }
+            });
+        });
+
+        function init() {
+            $('#report').append($('#report-src').html());
+            $('#drug').append($('#drug-src').html());
+        }
+
+
+
+
+$(function() {
+  $('.kana-btn').click(function() {
+      if ($('.kana-btn').text()==='カナ変換') {
+        var name = ['ホリノグチ　コタロウ', 'モリヤ　サラ', 'ホソヤ　マサト', 'クロザキ　トシロウ', 'オオシロ　イチカ'];
+          $('.kana0').text(name[0]);
+          $('.kana1').text(name[1]);
+          $('.kana2').text(name[2]);
+          $('.kana3').text(name[3]);
+          $('.kana4').text(name[4]);
+          $('.kana-btn').text('かな変換');
+      } else {
+          var name = ['堀ノ口 小太郎', '森谷 咲良', '細谷 雅人', '黒崎 利郎', '大城 一華'];
+          $('.kana0').text(name[0]);
+          $('.kana1').text(name[1]);
+          $('.kana2').text(name[2]);
+          $('.kana3').text(name[3]);
+          $('.kana4').text(name[4]);
+          $('.kana-btn').text('カナ変換');
+      }
+  });
+});
+</script>
+
+
+
+
+
+<!-- 事前検査 モーダルの設定 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#000000;">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:#FFFFFF;">事前検査確認</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="bg-white shadow-sm table table-hover">
+                    <tbody>
+                        <tr>
+                            <td rowspan="4" style="width:10%; vertical-align: middle;">検体<br />(01)</td>
+                            <td style="width:90%;text-align:left;">
+                                １回のみ
+                            </td>
+                        </tr>
+                        <tr style="text-align:left;">
+                            <td>尿一般<br />尿一般検査</td>
+                        </tr>
+                        <tr style="text-align:left;">
+                            <td>単独<br />ＧＯＴ、ＧＰＴ，血糖（空、随時）、ＣＰＫ、クレアチニン、中性脂肪、ＨＤＬ－Ｃ、ＬＤＬ－Ｃ、Ｎａ、ＣＬ、Ｋ<br />静脈採取</td>
+                        </tr>
+                        <tr style="text-align:left;">
+                            <td style="color: red;">至急</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary text-success"><a href="/KarteInput/">事前検査依頼</a></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+            </div><!-- /.modal-footer -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- コメント系入力 モーダルの設定 -->
+<div class="modal fade" id="myCommentInputModal" tabindex="-1" role="dialog" aria-labelledby="myCommentInputModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#000000;">
+                <h5 class="modal-title" id="exampleModalLabel" style="color:#FFFFFF;">コメント</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <input type="text" list="CommentInputEditSelect" class="form-control" id="CommentInputEditinput4" placeholder="テキスト入力もしくは選択" autocomplete="on">
+                    <datalist id="CommentInputEditSelect">
+                        <option value="高熱">
+                        <option value="早めに診察">
+                    </datalist>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">登録</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+            </div><!-- /.modal-footer -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

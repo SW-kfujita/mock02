@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>外来患者選択 - スカイカルテ！</title>
+
+        <link href="../../Content/vender/bootstrap.css" rel="stylesheet" />
+        <link href="../../Content/sidebar.css" rel="stylesheet" />
+        <link href="../../FontAwesome/css/all.css" rel="stylesheet" />
+        <link href="../../Content/common.css" rel="stylesheet" />
+        <link href="../../Content/style.css" rel="stylesheet" />
+        <link href="../../Content/PatientProfile.css" rel="stylesheet" />
+
+        <script src="../../Scripts/vender/modernizr-2.8.3.js"></script>
+
+
+
+
+
+    </head>
+
+    <body>
+        <!-- header -->
+        <header class="sk-header">
+            <div class="sk-primary-bar d-flex justify-content-between">
+                <h1 class="h4 d-inline-block mt-1">
+                    <span class="font-weight-bold mr-1">Sky</span>Karte
+                </h1>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownPersonalLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        鈴木医師
+                    </a>
+                    <div class="dropdown-menu shadow-sm" aria-labelledby="dropdownPersonalLink">
+                        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-3"></i>設定</a>
+                        <a class="dropdown-item" href="/Account/Logout/"><i class="fas fa-sign-out-alt mr-3"></i>ログアウト</a>
+
+                        <a class="dropdown-item" href="/PatientSelect/"><i class="fa fa-list-ul mr-3"></i>外来患者選択</a>
+                        <a class="dropdown-item" href="/SummaryKarte/rireki"><i class="fa fa-list-ul mr-3"></i>サマリーカルテ</a>
+                        <a class="dropdown-item" href="/KarteInput/"><i class="fa fa-user-edit mr-3"></i>本日カルテ</a>
+                        <a class="dropdown-item" href="/PatientSelect/PatientDisease"><i class="fa fa-user-edit mr-3"></i>病歴</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </header>
+        <!-- /header -->
+
+        <!-- wrapper -->
+        <div class="sk-wrapper">
+
+            <!-- content -->
+            <div class="sk-content">
+
+
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+                <!-- content -->
+
+                <!-- List Header -->
+                <div class="pat-list__header shadow-sm position-fixed w-100 bg-white mb-5">
+                    <!-- controll area -->
+                    <div class="pat-list__header-data-ctl accordion bg-white border-bottom px-3" id="search_accordion">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between align-items-center sk-date-picker pr-3 border-right">
+                                <i class="fas fa-chevron-left"></i>
+                                <i class="fas fa-calendar-alt"></i>
+                                <span class="yymmdd">
+                                    <span>2019</span>
+                                    <span class="small mx-2">年</span>
+                                    <span class="h5">01</span>
+                                    <span class="small mx-1">月</span>
+                                    <span class="h5">01</span>
+                                    <span class="small ml-1">日</span>
+                                </span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <form class="sk-search d-flex mr-5">
+                                    <input class="" type="text" placeholder="患者ID検索">
+                                    <button class="" aria-label="患者ID検索" type="button"><i class="fas fa-search"></i></button>
+                                </form>
+                                <form class="sk-search d-flex">
+                                    <input class="" type="text" placeholder="患者氏名検索(フリガナ)">
+                                    <button class="" aria-label="患者氏名検索(フリガナ)" type="button"><i class="fas fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /controll area -->
+                    <div class="pat-list__header-table-ctl d-flex justify-content-between px-3 bg-white">
+                        <span class="M-btn-OL ripple mt-2"><a href="#" class="align-middle"><i class="fa fa-redo-alt mr-2"></i>リロード</a></span>
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn btn-link dropdown-toggle"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    実施行為
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    <a class="dropdown-item" href="#">注射</a>
+                                    <a class="dropdown-item" href="#">処置</a>
+                                    <a class="dropdown-item" href="#">検体検査</a>
+                                    <a class="dropdown-item" href="#">生理検査</a>
+                                    <a class="dropdown-item" href="#">画像</a>
+                                    <a class="dropdown-item" href="#">リハビリ</a>
+                                </div>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn btn-link dropdown-toggle"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    診療科
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                </div>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn btn-link dropdown-toggle"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    担当医師
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                </div>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn btn-link dropdown-toggle"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    診察室
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                    <a class="dropdown-item" href="#">Dropdown link</a>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="exam-situation">
+                            <ul>
+                                <li class="form-check form-check-inline exam--all">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                        value="1" checked>
+                                    <label class="form-check-label" for="inlineRadio1">全て</label>
+                                </li>
+                                <li class="form-check form-check-inline exam--yet">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                        value="2">
+                                    <label class="form-check-label" for="inlineRadio2">未</label>
+                                </li>
+                                <li class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                        value="3">
+                                    <label class="form-check-label" for="inlineRadio3">診察中</label>
+                                </li>
+                                <li class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                                        value="4">
+                                    <label class="form-check-label" for="inlineRadio4">検査結果待ち</label>
+                                </li>
+                                <li class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5"
+                                        value="5">
+                                    <label class="form-check-label" for="inlineRadio5">保留</label>
+                                </li>
+                                <li class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6"
+                                        value="6">
+                                    <label class="form-check-label" for="inlineRadio6">済</label>
+                                </li>
+                                <li class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7"
+                                        value="7">
+                                    <label class="form-check-label" for="inlineRadio7">未会計</label>
+                                </li>
+                                <li class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8"
+                                        value="8">
+                                    <label class="form-check-label" for="inlineRadio8">会計済</label>
+                                </li>
+                                <li class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio9"
+                                        value="9">
+                                    <label class="form-check-label" for="inlineRadio9">文書作成待ち</label>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                    <!-- List Title -->
+                    <div class="pat-list__header-title d-flex border-top border-bottom">
+                        <div class="pat-list--xs text-center py-2 font-weight-bold border-right">NO</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">状況</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">状態</div>
+                        <div class="pat-list--l text-center py-2 font-weight-bold border-right">受付</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">待ち</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">患コ</div>
+                        <div class="pat-list--xl text-center py-2 font-weight-bold">ID</div>
+                        <div class="pat-list--free text-left py-2 pl-2 font-weight-bold">氏名<span class="badge badge-secondary ml-3 py-1">カナ変換</span></div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">年齢</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">事検</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">処方</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">注射</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">処置</div>
+                        <div class="pat-list--m text-center py-2 font-weight-bold border-right">検体</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">生理</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">画像</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">リハ</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">会計</div>
+                        <div class="pat-list--s text-center py-2 font-weight-bold border-right">文書</div>
+                        <div class="pat-list--m text-center py-2 font-weight-bold">科</div>
+                        <div class="pat-list--m text-center py-2 font-weight-bold">医師</div>
+                        <div class="pat-list--m text-center py-2 font-weight-bold">診察室</div>
+                    </div>
+                    <!-- List Title -->
+                </div>
+
+                <!-- table -->
+                <div class="pat-list__table mb-3 w-100 bg-white border-bottom">
+
+                    <div class="exam__item exam__item--done d-flex border-top">
+                        <div class="pat-list--xs border-right d-flex align-items-center justify-content-center">001</div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center">済</div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center">済</div>
+                        <div class="pat-list--l  border-right d-flex align-items-center justify-content-center">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle modal-comment px-2" href="#" role="button" id="dropdownMenuLink"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">09:00</a>
+                            </div>
+                        </div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center">10<span
+                                class="small">分</span></div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center"><a href="#"
+                                class="modal-comment"></a></div>
+                        <div class="pat-list--xl d-flex align-items-center small pl-2 "><a href="/PatientSelect/PatientProfileMain"
+                                title="患者プロファイル" class="male">0123456789<i class="far fa-address-card ml-2"></i></a></div>
+                        <div class="pat-list--free text-left px-2 d-flex align-items-center"><a href="#ho" title="ホリノグチ　コタロウ"
+                                class="male">堀ノ口 小太郎</a></div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center">39<span
+                                class="small">歳</span></div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center"><a href="#"><i
+                                    class="fas fa-expand"></i></a></div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center"><i class="fas fa-check-double text-success"></i></div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center"></div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center"></div>
+                        <div class="pat-list--m border-right d-flex align-items-center justify-content-center">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    仮
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="/InspectionResult/SpecimenResult">参照</a>
+                                    <a class="dropdown-item" href="/InspectionResult/Daily">時系列</a>
+                                    <a class="dropdown-item" href="/InspectionResult/Graph">グラフ</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center">
+                            <div class="dropdown">
+                                <button class="btn dropdown fas fa-check text-success" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <button type="button" class="btn btn-link"><a href="/SummaryKarte/rireki">実施内容確認（サマリーカルテ）</a></button>
+                                    <div class="dropdown-divider"></div>
+                                    <div class="custom-control custom-checkbox excute-action">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">実施サイン</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center"><a href="#"><i
+                                    class="far fa-image"></i></a></div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center"></div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center"><i class="fas fa-check-double text-success"></i></div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center"><i class="fas fa-check text-success"></i></div>
+                        <div class="pat-list--m small d-flex align-items-center justify-content-center">内科</div>
+                        <div class="pat-list--m small d-flex align-items-center justify-content-center">大山田</div>
+                        <div class="pat-list--m small d-flex align-items-center justify-content-center">診察室1</div>
+                    </div>
+
+                    <div id="tbl" class="teble">
+                    <div id="v-for-object" class="exam__item exam__item--done d-flex border-top">
+
+                        <div class="pat-list--xs border-right d-flex align-items-center justify-content-center" v-for="value in objectXS">
+                            {{ value }}
+                        </div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center" v-for="value in objectS">
+                            {{ value }}
+                        </div>
+                        <div class="pat-list--l  border-right d-flex align-items-center justify-content-center">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle modal-comment px-2" href="#" role="button" id="dropdownMenuLink"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-for="value in objectL">
+                                    {{ value }}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center" v-for="value in objectS2">
+                            {{ value }}
+                        </div>
+                        <div class="pat-list--xl d-flex align-items-center small pl-2 "><a href="/PatientSelect/PatientProfileMain"
+                                title="患者プロファイル" class="male" v-for="value in objectXL">{{ value }}<i class="far fa-address-card ml-2"></i></a></div>
+                        <div class="pat-list--free text-left px-2 d-flex align-items-center" v-for="value in objectFree">
+                            <a href="#ho" title="ホリノグチ　コタロウ" class="male">{{ value }}</a>
+                        </div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center" v-for="value in objectS3">
+                            {{ value }}
+                        </div>
+                        <div class="pat-list--m border-right d-flex align-items-center justify-content-center" v-for="value in objectM">
+                            {{ value }}
+                        </div>
+                        <div class="pat-list--s border-right d-flex align-items-center justify-content-center" v-for="value in objectS4">
+                            {{ value }}
+                        </div>
+                        <div class="pat-list--m border-right d-flex align-items-center justify-content-center" v-for="value in objectM2">
+                            {{ value }}
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+
+
+                <script>
+                    var teble = new Vue({
+                        el: '#tbl',
+                        data: {
+                            objectXS: {
+                                no: '001'
+                            },
+                            objectS: {
+                                situ: '済',
+                                state: '済'
+                            },
+                            objectL: {
+                                time: '09:00'
+                            },
+                            objectS2: {
+                                wait: '10分',
+                                comment: '有'
+                            },
+                            objectXL: {
+                                id: '0123456789'
+                            },
+                            objectFree: {
+                                name: '堀ノ口 小太郎'
+                            },
+                            objectS3: {
+                                age: '39歳',
+                                jiken: '有',
+                                shohou: '有',
+                                chusha: '有',
+                                shoti: '有',
+                            },
+                            objectM: {
+                                kentai: '仮'
+                            },
+                            objectS4: {
+                                seiri: '有',
+                                image: '有',
+                                riha: '無',
+                                kaikei: '有',
+                                bunsyo: '有'
+                            },
+                            objectM2: {
+                                ka :'内科',
+                                ishi: '大山田',
+                                shinsatsu: '診察室1'
+                            }
+                        }
+                    });
+
+
+
+                      for ( var i = 0; i < 24; i++) {
+                      document.getElementById('tbl').innerHTML += i + '<div id="v-for-object" class="exam__item exam__item--done d-flex border-top">';
+                      document.getElementById('tbl').innerHTML + '<div class="pat-list--xs border-right d-flex align-items-center justify-content-center" v-for="value in objectXS">{{ value }}</div>';
+                      document.getElementById('tbl').innerHTML + '<div class="pat-list--s border-right d-flex align-items-center justify-content-center" v-for="value in objectS">{{ value }}</div>';
+                      document.getElementById('tbl').innerHTML + '<div class="pat-list--l  border-right d-flex align-items-center justify-content-center">';
+                      document.getElementById('tbl').innerHTML + '<div class="dropdown"><a class="dropdown-toggle modal-comment px-2" href="#" role="button" id="dropdownMenuLink"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-for="value in objectL">{{ value }}</a></div></div>';
+                      document.getElementById('tbl').innerHTML + '<div class="pat-list--s border-right d-flex align-items-center justify-content-center" v-for="value in objectS2">{{ value }}</div>';
+                      document.getElementById('tbl').innerHTML + '<div class="pat-list--xl d-flex align-items-center small pl-2 "><a href="/PatientSelect/PatientProfileMain" title="患者プロファイル" class="male" v-for="value in objectXL">{{ value }}<i class="far fa-address-card ml-2"></i></a></div>';
+                      document.getElementById('tbl').innerHTML + '<div class="pat-list--free text-left px-2 d-flex align-items-center" v-for="value in objectFree"><a href="#ho" title="ホリノグチ　コタロウ" class="male">{{ value }}</a></div>';
+                      document.getElementById('tbl').innerHTML + '<div class="pat-list--s border-right d-flex align-items-center justify-content-center" v-for="value in objectS3">{{ value }}</div>';
+                      document.getElementById('tbl').innerHTML + '<div class="pat-list--m border-right d-flex align-items-center justify-content-center" v-for="value in objectM">{{ value }}</div>';
+                      document.getElementById('tbl').innerHTML + '<div class="pat-list--s border-right d-flex align-items-center justify-content-center" v-for="value in objectS4">{{ value }}</div>';
+                      document.getElementById('tbl').innerHTML + '<div class="pat-list--m border-right d-flex align-items-center justify-content-center" v-for="value in objectM2">{{ value }}</div>';
+                    }
+
+
+                  /*  for ( var i = 0; i < 24; i++) {
+                      document.write('<div id="v-for-object" class="exam__item exam__item--done d-flex border-top">');
+                      document.write('<div class="pat-list--xs border-right d-flex align-items-center justify-content-center" v-for="value in objectXS">{{ value }}</div>');
+                      document.write('<div class="pat-list--s border-right d-flex align-items-center justify-content-center" v-for="value in objectS">{{ value }}</div>');
+                    } */
+
+
+
+
+                </script>
+                <!-- /table -->
+
+                <!-- /content -->
+
+            </div>
+            <!-- /content -->
+
+
+        </div>
+        <!-- /wrapper -->
+
+        <footer class="sk-footer">
+            <p>&copy; 2019 - Sky Medical Inc.</p>
+        </footer>
+
+
+        <script src="../../Scripts/vender/jquery-3.3.1.js"></script>
+
+        <script src="../../Scripts/vender/popper.min.js"></script>
+        <script src="../../Scripts/vender/bootstrap.min.js"></script>
+
+
+        <script src="../../Scripts/sidemenu.js"></script>
+        <script src="../../Scripts/ripple.js"></script>
+        <script src="../../Scripts/button.js"></script>
+        <script src="../../Scripts/from.js"></script>
+        <script src="../../Scripts/localstorage_set.js"></script>
+
+    </body>
+
+</html>

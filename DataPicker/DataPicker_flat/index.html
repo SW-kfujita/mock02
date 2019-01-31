@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>DatePicker デモ</title>
+<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/flatpickr"></script>
+<script>flatpickr(".mySelector", {});</script>
+</head>
+
+<body>
+
+  <div>
+    <h3>デフォルト</h3>
+      <input class="flatpickr" type="text" placeholder="Select Date.." readonly="readonly">
+  </div>
+  <div>
+    <h3>期間選択</h3>
+      <input class="flatpickr kikan" type="text" placeholder="Select Date.." readonly="readonly">
+  </div>
+  <div>
+   <h3>テキストボックス</h3>
+      <div class="flatpickr input-group textbox" data-id="strap">
+          <input type="text" placeholder="Select Date.." data-input>
+
+          <a class="input-button" title="toggle" data-toggle>
+              <i class="material-icons">date_range</i>
+          </a>
+
+          <a class="input-button" title="clear" data-clear>
+              <i class="material-icons">clear</i>
+          </a>
+      </div>
+
+        <style>
+
+        .input-group {
+            display: flex;
+            align-items: center;
+        }
+        .input-group input {
+            border: 1px solid #c3c3c3;
+            height: 36px;
+            line-height: 36px;
+            width: 80%;
+            padding: 4px;
+            max-width: 360px;
+            border-radius: 3px;
+            background: #fff;
+        }
+        a.input-button {
+            text-decoration: none;
+            border: 1px solid #bbb;
+            display: block;
+            padding: 8.5px 12px;
+            border-left: 0;
+            cursor: pointer;
+            align-self: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        </style>
+
+    </div>
+
+
+<script>
+//デフォルト
+flatpickr('.flatpickr');
+
+//期間選択
+const config = {
+  mode: "range"
+}
+flatpickr('.kikan', config);
+
+
+//テキストボックス
+const textbox = {
+  wrap: true
+}
+flatpickr('.textbox', config);
+
+
+
+</script>
+</body>
+</html>
